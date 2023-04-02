@@ -3,37 +3,32 @@ import { esES } from '@mui/x-date-pickers';
 
 const palette = {
     primary: {
-        main: '#A167C9',
+        main: '#161B24',
         contrastText: '#fff'
     },
     secondary: {
         main: '#fff',
-        contrastText: 'rgba(31, 44, 56, 1)'
+        contrastText: '#161B24'
     },
     error: {
-        main: '#F24747',
-        contrastText: '#fff'
-    },
-    info: {
-        main: '#3B82F6',
-        contrastText: '#fff'
+        main: '#797F86',
+        contrastText: '#161B24'
     },
     warning: {
-        main: '#F59E0B',
-        contrastText: '#fff'
+        main: '#E7C95E',
+        contrastText: '#161B24'
     },
     success: {
-        main: '#10B981',
-        contrastText: '#fff'
+        main: '#66996E',
+        contrastText: '#161B24'
     },
     text: {
-        primary: 'rgba(31, 44, 56, 1)',
-        secondary: '#4B4B4B',
-        tertiary: '#858585'
+        primary: '#161B24',
+        secondary: '#757E8A'
     },
     divider: '#ccc',
     background: {
-        default: '#E5E5E5'
+        default: '#EDF0F'
     }
 }
 
@@ -51,8 +46,7 @@ const theme = createTheme({
                     fontSize: '1.05rem',
                     fontWeight: 500,
                     borderRadius: '100px',
-                    gap: '8px',
-                    boxShadown: '0px 2px 12px rgba(161, 103, 201, 0.36);'
+                    gap: '8px'
                 }
             }
         },
