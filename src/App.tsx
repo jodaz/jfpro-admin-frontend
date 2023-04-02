@@ -1,17 +1,12 @@
 import './App.css'
-import {
-    Route,
-    Routes
-} from 'react-router-dom'
-// Pages
-import NotFound from './pages/NotFound'
+import Pages from './pages'
+import { ThemeProvider } from '@mui/material/styles';
+import theme from './theme';
 
 const App = () => (
-    <Routes>
-        <Route
-            path='*'
-            element={<NotFound />}
-        />
-    </Routes>
+    <ThemeProvider theme={theme}>
+        <Pages />
+    </ThemeProvider>
 )
+
 export default App
