@@ -11,7 +11,7 @@ const palette = {
         contrastText: '#161B24'
     },
     error: {
-        main: '#797F86',
+        main: '#C24141',
         contrastText: '#161B24'
     },
     warning: {
@@ -41,12 +41,13 @@ const theme = createTheme({
         MuiButton: {
             styleOverrides: {
                 root: {
-                    padding: '8px 24px',
+                    padding: '1rem',
                     textTransform: 'unset',
                     fontSize: '1.05rem',
                     fontWeight: 500,
-                    borderRadius: '100px',
-                    gap: '8px'
+                    borderRadius: '73px',
+                    gap: '8px',
+                    lineHeight: '20px'
                 }
             }
         },
@@ -61,15 +62,15 @@ const theme = createTheme({
             styleOverrides: {
                 root: ({ theme }) => ({
                     border: '1px solid #ccc',
-                    borderRadius: '100px !important',
-                    padding: '10px 12px',
+                    borderRadius: '8px',
+                    padding: '0.5rem 1rem',
                     transition: theme.transitions.create([
                         'border-color',
                         'background-color',
                         'box-shadow',
                     ]),
                     '&.Mui-focused': {
-                        boxShadow: `${alpha(theme.palette.primary.main, 0.25)} 0 0 0 0.2rem`,
+                        boxShadow: `${alpha(theme.palette.primary.main, 0.25)} 0 0 0 0.1rem`,
                         borderColor: theme.palette.primary.main,
                     },
                     '&.Mui-error': {
@@ -80,13 +81,13 @@ const theme = createTheme({
         },
         MuiFormLabel: {
             styleOverrides: {
-                root: {
+                root: ({ theme }) => ({
                     lineHeight: '22px',
                     fontWeight: 500,
                     fontSize: '20px',
                     marginLeft: '-1rem',
-                    color: '#858585'
-                }
+                    color: `${theme.palette.primary.main}`
+                })
             }
         },
         MuiFormControl: {
