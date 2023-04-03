@@ -1,7 +1,8 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
-// Screens
-import { useMediaQuery, useTheme } from '@mui/material';
+import {
+    useMediaQuery,
+    useTheme,
+    Box
+} from '@mui/material';
 
 const Overview = () => {
     const theme = useTheme()

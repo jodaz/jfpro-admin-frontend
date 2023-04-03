@@ -1,6 +1,4 @@
-import Drawer from '@mui/material/Drawer';
-import Toolbar from '@mui/material/Toolbar';
-import Box from '@mui/material/Box';
+import { Box, Drawer, Toolbar } from "@mui/material";
 
 const drawerWidth = '350px';
 

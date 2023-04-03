@@ -1,7 +1,5 @@
-import Box from '@mui/material/Box'
-import Button from '@mui/material/Button';
 import LinkBehavior from '../../components/LinkBehavior'
-import { alpha } from '@mui/material'
+import { Button, Box, alpha } from '@mui/material'
 
 const NotFound = () => (
     <Box sx={{

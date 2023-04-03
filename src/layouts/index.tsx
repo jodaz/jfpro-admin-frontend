@@ -1,8 +1,7 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
 import Aside from './Aside'
 // Screens
-import { useMediaQuery, useTheme } from '@mui/material';
+import { Box, useMediaQuery, useTheme } from '@mui/material';
 import { LayoutProps } from '../types';
 
 interface AdminLayoutProps extends LayoutProps {

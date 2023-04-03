@@ -1,12 +1,14 @@
 import * as React from 'react'
-import Box from '@mui/material/Box'
-import Stack from '@mui/material/Stack'
-import Button from '@mui/material/Button';
+import {
+    Box,
+    Typography,
+    Button,
+    Stack
+ } from '@mui/material';
 import { useForm } from 'react-hook-form';
 import { EMAIL, PASSWORD } from '../../utils/validations';
 import TextInput from '../../components/TextInput';
 import { useNavigate } from 'react-router-dom';
-import { Typography } from '@mui/material';
 
 type LoginValues = {
     email: string,
