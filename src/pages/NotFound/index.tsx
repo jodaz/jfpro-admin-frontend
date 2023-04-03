@@ -1,7 +1,6 @@
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button';
 import LinkBehavior from '../../components/LinkBehavior'
-import { alpha } from '@mui/material'
 
 const NotFound = () => (
     <Box sx={{
@@ -34,15 +33,12 @@ const NotFound = () => (
             <Box sx={{
                 padding: '1rem 0'
             }}>
-                <Button to="/" sx={{
-                    backgroundColor: theme => theme.palette.primary.main,
-                    color: '#fff',
-                    fontWeight: 700,
-                    borderRadius: '8px',
-                    '&:hover': {
-                        backgroundColor: theme => alpha(theme.palette.primary.main, 0.85)
-                    }
-                }} component={LinkBehavior}>
+                <Button
+                    to="/"
+                    variant="contained"
+                    color="secondary"
+                    component={LinkBehavior}
+                >
                     Ir al inicio
                 </Button>
             </Box>
