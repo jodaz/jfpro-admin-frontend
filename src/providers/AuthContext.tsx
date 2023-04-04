@@ -2,6 +2,7 @@ import * as React from 'react'
 import { IAuth, AuthContextType } from '../types/providers'
 import { LayoutProps } from '../types'
 import vars from '../utils/vars'
+import { apiProvider } from '../api';
 
 enum AuthActionType {
     LOGIN = 'LOGIN',
@@ -78,17 +79,24 @@ export function useAuth() {
 
 export async function loginUser(dispatch: any, values: any) {
     try {
-        const { data, token } = values
+        const res = await apiProvider.post('/login', values)
 
-        dispatch({
-            type: 'LOGIN',
-            payload: {
-                user: data,
-                token: token
-            }
-        })
+        if (res.status >= 200 && res.status < 300) {
+            const { data } = res;
 
-        await setLocalCredentials(token)
+            dispatch({
+                type: 'LOGIN',
+                payload: {
+                    token: data
+                }
+            })
+
+            await setLocalCredentials(data)
+
+            return res;
+        }
+
+        return false;
     } catch (e) {
         console.log(e);
     }

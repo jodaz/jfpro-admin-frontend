@@ -9,7 +9,7 @@ import { useForm } from 'react-hook-form';
 import { EMAIL, PASSWORD } from '../../utils/validations';
 import TextInput from '../../components/TextInput';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../../providers/AuthContext';
+import { loginUser, useAuth } from '../../providers/AuthContext';
 
 type LoginValues = {
     email: string,
@@ -23,9 +23,12 @@ const Login = () => {
         isSubmitting
     }} = useForm<LoginValues>();
 
-    const onSubmit = React.useCallback((values: LoginValues) => {
-        console.log(values)
-        navigate('/overview')
+    const onSubmit = React.useCallback(async (values: LoginValues) => {
+        const loginUserResponse = await loginUser(authDispatch, values);
+
+        if (loginUserResponse) {
+            navigate('/overview')
+        }
     }, []);
 
     return (
