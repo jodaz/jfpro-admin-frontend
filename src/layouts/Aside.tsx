@@ -4,6 +4,7 @@ import {
     Toolbar
 } from "@mui/material";
 import LogoutButton from "../components/Buttons/Logout";
+import Logo from '../assets/branding/LOGO_LIGHT.svg'
 
 const drawerWidth = '350px';
 
@@ -26,8 +27,14 @@ const Sidebar = () => (
     >
         <Toolbar sx={{
             display: 'flex',
-            flexDirection: 'column'
+            flexDirection: 'column',
+            p: 3
         }}>
+            <Box
+                component='img'
+                src={Logo}
+                height='3rem'
+            />
         </Toolbar>
         <Box
             sx={{
