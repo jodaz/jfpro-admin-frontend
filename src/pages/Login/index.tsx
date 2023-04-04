@@ -9,6 +9,7 @@ import { useForm } from 'react-hook-form';
 import { EMAIL, PASSWORD } from '../../utils/validations';
 import TextInput from '../../components/TextInput';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../providers/AuthContext';
 
 type LoginValues = {
     email: string,
@@ -17,6 +18,7 @@ type LoginValues = {
 
 const Login = () => {
     const navigate = useNavigate()
+    const { dispatch: authDispatch } = useAuth()
     const { control, handleSubmit, setError, formState: {
         isSubmitting
     }} = useForm<LoginValues>();

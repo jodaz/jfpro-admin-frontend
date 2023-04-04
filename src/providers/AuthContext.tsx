@@ -1,30 +1,34 @@
 import * as React from 'react'
+import { IAuth, AuthContextType } from '../types/providers'
+import { LayoutProps } from '../types'
 import vars from '../utils/vars'
 
-const setLocalCredentials = async (token: string, data: any) => {
+enum AuthActionType {
+    LOGIN = 'LOGIN',
+    LOGOUT = 'LOGOUT'
+}
+
+interface AuthAction {
+    type: AuthActionType;
+    payload: any;
+}
+
+const initialState: IAuth = {
+    isAuth: false,
+    token: ''
+}
+
+const setLocalCredentials = async (token: string) => {
     await localStorage.setItem(vars.authToken, token)
-    await localStorage.setItem(vars.user, JSON.stringify(data));
 
     return true;
 }
 
-const AuthContext = React.createContext()
-
-const initialState = {
-    isAuth: false,
-    user: {},
-    token: '',
-    userCoords: null,
-    openGeolocation: false,
-    userPlan: null
-}
+const AuthContext = React.createContext<AuthContextType>({ state: initialState, dispatch: () => null })
 
 const getInitialState = () => {
-    const localInitialState = { ...initialState };
+    const localInitialState = initialState;
 
-    if (localStorage.getItem(vars.user)) {
-        localInitialState.user = JSON.parse(localStorage.getItem(vars.user))
-    }
     if (localStorage.getItem(vars.authToken)) {
         localInitialState.token = localStorage.getItem(vars.authToken);
         localInitialState.isAuth = true;
@@ -33,28 +37,26 @@ const getInitialState = () => {
     return localInitialState;
 }
 
-function authReducer(state, action) {
-    if (action) {
-        switch (action.type) {
-            case 'LOGIN': {
-                return {
-                    ...state,
-                    user: action.payload.user,
-                    token: action.payload.token,
-                    isAuth: true
-                }
+function authReducer(state: IAuth, action: AuthAction): IAuth {
+    switch (action.type) {
+        case AuthActionType.LOGIN: {
+            return {
+                ...state,
+                token: action.payload.token,
+                isAuth: true
             }
-            case 'LOGOUT': {
-                return initialState
-            }
-            default: {
-                throw new Error(`Unhandled action type: ${action.type}`)
-            }
+        }
+        case AuthActionType.LOGOUT: {
+            return initialState
+        }
+        default: {
+            console.log(`Unhandled action type: ${action.type}`)
+            return initialState;
         }
     }
 }
 
-export function AuthProvider({ children }) {
+export const AuthProvider: React.FC<LayoutProps> = ({ children }) => {
     const [state, dispatch] = React.useReducer(authReducer, getInitialState())
 
     return (
@@ -74,7 +76,7 @@ export function useAuth() {
     return context
 }
 
-export async function loginUser(dispatch, values) {
+export async function loginUser(dispatch: any, values: any) {
     try {
         const { data, token } = values
 
@@ -85,18 +87,18 @@ export async function loginUser(dispatch, values) {
                 token: token
             }
         })
-        await setLocalCredentials(token, data)
+
+        await setLocalCredentials(token)
     } catch (e) {
         console.log(e);
     }
 }
 
-export async function logout(dispatch) {
+export async function logout(dispatch: any) {
     try {
         dispatch({ type: 'LOGOUT' })
 
         await localStorage.removeItem(vars.authToken)
-        await localStorage.removeItem(vars.user);
     } catch (e) {
         console.log(e);
     }
