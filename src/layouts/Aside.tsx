@@ -1,4 +1,9 @@
-import { Box, Drawer, Toolbar } from "@mui/material";
+import {
+    Box,
+    Drawer,
+    Toolbar
+} from "@mui/material";
+import LogoutButton from "../components/Buttons/Logout";
 
 const drawerWidth = '350px';
 
@@ -28,10 +33,13 @@ const Sidebar = () => (
             sx={{
                 height: '100%',
                 maxWidth: drawerWidth,
-                overflowY: 'auto'
+                overflowY: 'auto',
+                display: 'flex',
+                p: 2
             }}
             id="drawer-container"
         >
+            <LogoutButton />
         </Box>
     </Drawer>
 )
