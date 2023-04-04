@@ -1,4 +1,3 @@
-import './App.css'
 import Pages from './pages'
 import { ThemeProvider } from '@mui/material/styles';
 import theme from './theme';
