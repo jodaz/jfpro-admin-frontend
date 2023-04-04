@@ -1,4 +1,5 @@
 import {
+    Navigate,
     Route,
     Routes
 } from 'react-router-dom'
@@ -22,6 +23,7 @@ const Pages = () => (
                 </Layout>
             }
         />
+        <Route path='/' element={<Navigate to='/login' replace />} />
         <Route
             path='*'
             element={<NotFound />}

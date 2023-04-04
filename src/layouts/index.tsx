@@ -3,6 +3,8 @@ import Aside from './Aside'
 // Screens
 import { Box, useMediaQuery, useTheme } from '@mui/material';
 import { LayoutProps } from '../types';
+import { useAuth } from '../providers/AuthContext';
+import { Navigate } from 'react-router-dom';
 
 interface AdminLayoutProps extends LayoutProps {
     title: string
@@ -22,7 +24,10 @@ const DesktopLayout: React.FC<AdminLayoutProps> = ({ children }) => (
 
 const Layout: React.FC<AdminLayoutProps> = ({ children, title }) => {
     const theme = useTheme()
+    const { state: { isAuth } } = useAuth();
     const isSmall = useMediaQuery(theme.breakpoints.down('sm'));
+
+    if (!isAuth) return <Navigate to='/login' />
 
     if (!isSmall) {
         return (
