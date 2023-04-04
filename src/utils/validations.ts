@@ -20,6 +20,7 @@ export const EMAIL = {
         unique: true,
         notfound: true,
         deleted: true,
+        invalid: true,
         byrrss: true
     },
     messages: {
@@ -27,6 +28,7 @@ export const EMAIL = {
         unique: 'El correo ha sido registrado.',
         required: "Ingrese su correo",
         pattern: "Email inválido",
-        notfound: 'El usuario no ha sido encontrado.'
+        notfound: 'El usuario no ha sido encontrado.',
+        invalid: 'Credenciales inválidas'
     }
 }

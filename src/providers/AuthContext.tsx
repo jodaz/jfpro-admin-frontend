@@ -79,10 +79,10 @@ export function useAuth() {
 
 export async function loginUser(dispatch: any, values: any) {
     try {
-        const res = await apiProvider.post('/login', values)
+        const response = await apiProvider.post('/login', values)
 
-        if (res.status >= 200 && res.status < 300) {
-            const { data } = res;
+        if (response.status >= 200 && response.status < 300) {
+            const { data } = response;
 
             dispatch({
                 type: 'LOGIN',
@@ -93,12 +93,18 @@ export async function loginUser(dispatch: any, values: any) {
 
             await setLocalCredentials(data)
 
-            return res;
+            return { success: true };
         }
 
         return false;
-    } catch (e) {
-        console.log(e);
+    } catch (error: any) {
+        if (error.response.status >= 400 && error.response.status < 500) {
+            return {
+                success: false,
+                status: error.response.status,
+                data: error.response.data.errors
+            };
+        }
     }
 }
 

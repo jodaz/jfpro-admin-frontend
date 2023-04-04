@@ -24,10 +24,18 @@ const Login = () => {
     }} = useForm<LoginValues>();
 
     const onSubmit = React.useCallback(async (values: LoginValues) => {
-        const loginUserResponse = await loginUser(authDispatch, values);
+        const loginUserResponse: any = await loginUser(authDispatch, values);
 
-        if (loginUserResponse) {
+        const { status, data, success } = loginUserResponse;
+
+        if (success) {
             navigate('/overview')
+        } else {
+            if (status == 422) {
+                setError('email', {
+                    type: 'invalid'
+                })
+            }
         }
     }, []);
 
