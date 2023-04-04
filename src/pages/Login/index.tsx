@@ -1,7 +1,6 @@
 import * as React from 'react'
 import {
     Box,
-    Typography,
     Button,
     Stack
  } from '@mui/material';
@@ -9,6 +8,8 @@ import { useForm } from 'react-hook-form';
 import { EMAIL, PASSWORD } from '../../utils/validations';
 import TextInput from '../../components/TextInput';
 import { useNavigate } from 'react-router-dom';
+import { loginUser, useAuth } from '../../providers/AuthContext';
+import Logo from '../../assets/branding/LOGO_DARK.svg'
 
 type LoginValues = {
     email: string,
@@ -17,13 +18,17 @@ type LoginValues = {
 
 const Login = () => {
     const navigate = useNavigate()
+    const { dispatch: authDispatch } = useAuth()
     const { control, handleSubmit, setError, formState: {
         isSubmitting
     }} = useForm<LoginValues>();
 
-    const onSubmit = React.useCallback((values: LoginValues) => {
-        console.log(values)
-        navigate('/overview')
+    const onSubmit = React.useCallback(async (values: LoginValues) => {
+        const loginUserResponse = await loginUser(authDispatch, values);
+
+        if (loginUserResponse) {
+            navigate('/overview')
+        }
     }, []);
 
     return (
@@ -40,20 +45,17 @@ const Login = () => {
                 minWidth: '320px',
                 borderRadius: '15px'
             }}>
-                <Box component="form" sx={{ m: 1, flex: 1 }} onSubmit={handleSubmit(onSubmit)}>
+                <Box
+                    component="form"
+                    sx={{ m: 1, flex: 1 }}
+                    onSubmit={handleSubmit(onSubmit)}
+                >
                     <Stack
-                        spacing={3}
+                        spacing={4}
                         direction='column'
                         p={3}
                     >
-                        <Box>
-                            <Typography
-                                color="text.primary"
-                                variant="h4"
-                            >
-                                JFPRO
-                            </Typography>
-                        </Box>
+                        <Box component='img' src={Logo} />
                         <TextInput
                             label='Email'
                             name='email'
