@@ -1,9 +1,9 @@
 import * as React from 'react'
 import {
     Box,
-    Button,
     Stack
- } from '@mui/material';
+} from '@mui/material';
+import { LoadingButton } from '@mui/lab';
 import { useForm } from 'react-hook-form';
 import { EMAIL, PASSWORD } from '../../utils/validations';
 import TextInput from '../../components/TextInput';
@@ -86,14 +86,15 @@ const Login = () => {
                             rules={PASSWORD.rules}
                             fullWidth
                         />
-                        <Button
+                        <LoadingButton
                             fullWidth
                             color='primary'
                             variant="contained"
                             type='submit'
+                            loading={isSubmitting}
                         >
                             Iniciar sesión
-                        </Button>
+                        </LoadingButton>
                     </Stack>
                 </Box>
             </Box>
