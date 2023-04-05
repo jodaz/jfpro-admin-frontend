@@ -13,7 +13,7 @@ const LogoutButton = () => {
     }
 
     return (
-        <Box alignSelf='end'>
+        <Box alignSelf='start'>
             <Button color="secondary" onClick={handleClick}>
                 <Logout /> Cerrar sesión
             </Button>

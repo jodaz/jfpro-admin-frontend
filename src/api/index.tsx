@@ -3,12 +3,12 @@ import vars from '../utils/vars';
 
 const jsonInstance = defaultAxios.create({
     baseURL: vars.source,
-    withCredentials: true
+    withCredentials: false
 });
 
 const blobInstance = defaultAxios.create({
     baseURL: vars.source,
-    withCredentials: true,
+    withCredentials: false,
     responseType: 'blob'
 });
 
