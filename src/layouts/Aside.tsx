@@ -2,6 +2,7 @@ import {
     Box,
     Drawer,
     Toolbar,
+    Divider,
     Stack
 } from "@mui/material";
 import LogoutButton from "../components/Buttons/Logout";
@@ -16,11 +17,17 @@ import { useLocation } from "react-router-dom";
 
 const drawerWidth = '350px';
 
+const OverviewRoute = {
+    title: 'Overview',
+    icon: <AssessmentIcon />,
+    to: '/overview',
+}
+
 const routes = [
     {
-        title: 'Overview',
-        icon: <AssessmentIcon />,
-        to: '/overview',
+        title: 'Ventas',
+        icon: <PaymentsIcon />,
+        to: '/sales',
     },
     {
         title: 'Productos',
@@ -49,6 +56,26 @@ const Sidebar = () => {
                     bgcolor: theme => theme.palette.primary.main
                 },
                 zIndex: 1000,
+                scrollbarColor: "#E5E5E5 #E5E5E5",
+                "&::-webkit-scrollbar, & *::-webkit-scrollbar": {
+                    backgroundColor: "#E5E5E5",
+                    width: '8px',
+                },
+                "&::-webkit-scrollbar-thumb, & *::-webkit-scrollbar-thumb": {
+                    borderRadius: 8,
+                    backgroundColor: "#959595",
+                    minHeight: 12,
+                    border: "1px solid #959595",
+                },
+                "&::-webkit-scrollbar-thumb:focus, & *::-webkit-scrollbar-thumb:focus": {
+                    backgroundColor: "#959595",
+                },
+                "&::-webkit-scrollbar-thumb:active, & *::-webkit-scrollbar-thumb:active": {
+                    backgroundColor: "#959595",
+                },
+                "&::-webkit-scrollbar-thumb:hover, & *::-webkit-scrollbar-thumb:hover": {
+                    backgroundColor: "#959595",
+                },
                 bgcolor: theme => theme.palette.primary.main
             }}
             variant="permanent"
@@ -72,7 +99,7 @@ const Sidebar = () => {
                     overflowY: 'auto',
                     display: 'flex',
                     flexDirection: 'column',
-                    p: 2
+                    p: 2,
                 }}
                 id="drawer-container"
             >
@@ -82,6 +109,18 @@ const Sidebar = () => {
                     direction='column'
                     alignItems='start'
                 >
+                    <NavLink
+                        {...OverviewRoute}
+                        isActive={location.pathname.startsWith(OverviewRoute.to)}
+                    />
+                    <Divider
+                        sx={{
+                            width: '80%',
+                            alignSelf: 'center',
+                            marginTop: '1.5rem !important',
+                            borderColor: '#343842 !important'
+                        }}
+                    />
                     {routes.map(item => (
                         <NavLink
                             {...item}
