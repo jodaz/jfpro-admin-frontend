@@ -13,13 +13,13 @@ import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
 import Logo from '../assets/branding/LOGO_LIGHT.svg'
 import { useLocation } from "react-router-dom";
-import CircleIcon from '@mui/icons-material/Circle';
+
 const drawerWidth = '350px';
 
 const routes = [
     {
         title: 'Overview',
-        icon: <CircleIcon />,
+        icon: <AssessmentIcon />,
         to: '/overview',
     },
     {
