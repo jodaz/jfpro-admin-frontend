@@ -3,7 +3,7 @@ import { NavLinkProps } from "../types";
 import LinkBehavior from '../components/LinkBehavior';
 import { Button, Tooltip } from '@mui/material';
 
-const NavLink: React.FC<NavLinkProps> = ({ icon, to, title, isActive }) => {
+const NavLink: React.FC<NavLinkProps> = ({ icon, to, title, isActive, isSubmenuItem }) => {
     return (
         <Tooltip key={title} title={title}>
             <Button
@@ -12,9 +12,12 @@ const NavLink: React.FC<NavLinkProps> = ({ icon, to, title, isActive }) => {
                 startIcon={icon}
                 color='secondary'
                 fullWidth
+                variant='text'
                 sx={{
                     justifyContent: 'start',
-                    backgroundColor: isActive ? '#343842' : 'unset'
+                    backgroundColor: (isActive && !isSubmenuItem) ? '#343842' : 'unset',
+                    color:  (!isActive && isSubmenuItem)
+                        ? '#757E8A' : (isActive && isSubmenuItem) ? '#fff' : '#fff'
                 }}
             >
                 {title}

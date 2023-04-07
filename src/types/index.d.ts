@@ -8,5 +8,6 @@ export interface NavLinkProps {
     icon: React.ReactNode,
     to: string,
     isActive: boolean,
+    isSubmenuItem: boolean,
     title: string,
 }
