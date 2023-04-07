@@ -4,7 +4,6 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Avatar from '@mui/material/Avatar';
-import Tooltip from '@mui/material/Tooltip';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import { AppBarProps } from '../types';
@@ -13,7 +12,7 @@ import NotificationButton from '../components/Buttons/NotificationButton';
 import ReportButton from '../components/Buttons/ReportButton';
 import { Stack } from '@mui/material';
 
-const AppBar: React.FC<AppBarProps> = ({ title, position, isSmall }) => (
+const AppBar: React.FC<AppBarProps> = ({ title, position, isSmall, user }) => (
     <MuiAppBar position={position} sx={{
         backgroundColor: '#F2F5F7',
         color: theme => theme.palette.primary.main,
@@ -61,9 +60,24 @@ const AppBar: React.FC<AppBarProps> = ({ title, position, isSmall }) => (
                     <NotificationButton />
                     <MessageButton />
                 </Stack>
-                <Tooltip title="Open settings">
-                    <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-                </Tooltip>
+                <Box sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    backgroundColor: '#DAE0E6',
+                    borderRadius: '73px',
+                    p: 1
+                }}>
+                    <Avatar
+                        alt={`${user.name} ${user.lastname}`}
+                        src="/static/images/avatar/2.jpg"
+                        sx={{ width: 32, height: 32, mr: 1 }}
+                    />
+                    {!isSmall && (
+                        <Typography variant="subtitle1">
+                            {`${user.name} ${user.lastname}`}
+                        </Typography>
+                    )}
+                </Box>
             </Box>
         </Toolbar>
     </MuiAppBar>

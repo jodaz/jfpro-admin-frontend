@@ -42,7 +42,7 @@ const Layout: React.FC<AdminLayoutProps> = ({ children, title }) => {
     const theme = useTheme()
     const { state: { isAuth, user } } = useAuth();
     const isSmall = useMediaQuery(theme.breakpoints.down('sm'));
-
+    console.log(user)
     if (!isAuth) return <Navigate to='/login' />
 
     if (!isSmall) {
@@ -54,6 +54,7 @@ const Layout: React.FC<AdminLayoutProps> = ({ children, title }) => {
                         title={title}
                         isSmall={isSmall}
                         position='static'
+                        user={user}
                     />
                 }
             >
@@ -80,6 +81,7 @@ const Layout: React.FC<AdminLayoutProps> = ({ children, title }) => {
                     title={title}
                     isSmall={isSmall}
                     position='fixed'
+                    user={user}
                 />
                 <Box sx={{
                     height: '100%',

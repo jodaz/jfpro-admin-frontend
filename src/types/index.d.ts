@@ -23,5 +23,6 @@ export interface SubMenuProps extends LayoutProps {
 
 export interface AppBarProps extends AppBarProps {
     title: string,
-    isSmall: boolean
+    isSmall: boolean,
+    user: any
 }

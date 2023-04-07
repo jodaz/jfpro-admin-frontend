@@ -28,6 +28,7 @@ const palette = {
     },
     divider: '#ccc',
     background: {
+        light: '#DAE0E6',
         default: '#EDF0F'
     }
 }
