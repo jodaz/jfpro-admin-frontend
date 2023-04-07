@@ -1,5 +1,5 @@
 import { Button, Box } from '@mui/material';
-import { useAuth, logout } from '../../../providers/AuthContext';
+import { useAuth, logout } from '../../providers/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { Logout } from '@mui/icons-material';
 

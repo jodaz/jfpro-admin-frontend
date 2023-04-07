@@ -9,10 +9,10 @@ import AppBar from './AppBar';
 
 interface AdminLayoutProps extends LayoutProps {
     title: string;
-    isSmall: boolean
+    AppBar: React.ReactNode
 }
 
-const DesktopLayout: React.FC<AdminLayoutProps> = ({ children, title, isSmall }) => (
+const DesktopLayout: React.FC<AdminLayoutProps> = ({ children, AppBar }) => (
     <Box sx={{
         display: 'flex',
         minHeight: '100vh',
@@ -27,11 +27,7 @@ const DesktopLayout: React.FC<AdminLayoutProps> = ({ children, title, isSmall })
             height: '100vh',
             width: '100%'
         }}>
-            <AppBar
-                title={title}
-                isSmall={isSmall}
-                position='static'
-            />
+            {AppBar}
             <Box sx={{
                 height: '100%',
                 width: '100%'
@@ -44,14 +40,23 @@ const DesktopLayout: React.FC<AdminLayoutProps> = ({ children, title, isSmall })
 
 const Layout: React.FC<AdminLayoutProps> = ({ children, title }) => {
     const theme = useTheme()
-    const { state: { isAuth } } = useAuth();
+    const { state: { isAuth, user } } = useAuth();
     const isSmall = useMediaQuery(theme.breakpoints.down('sm'));
 
     if (!isAuth) return <Navigate to='/login' />
 
     if (!isSmall) {
         return (
-            <DesktopLayout title={title} isSmall={isSmall}>
+            <DesktopLayout
+                title={title}
+                AppBar={
+                    <AppBar
+                        title={title}
+                        isSmall={isSmall}
+                        position='static'
+                    />
+                }
+            >
                 {children}
             </DesktopLayout>
         )

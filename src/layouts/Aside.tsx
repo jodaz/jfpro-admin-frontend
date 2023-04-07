@@ -6,7 +6,7 @@ import {
     Divider,
     Stack
 } from "@mui/material";
-import LogoutButton from "../components/Buttons/Logout";
+import LogoutButton from "../components/Buttons/LogoutButton";
 import NavLink from "./NavLink";
 import SubMenu from './Submenu';
 // Icons

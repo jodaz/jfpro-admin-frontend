@@ -8,6 +8,10 @@ import Tooltip from '@mui/material/Tooltip';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import { AppBarProps } from '../types';
+import MessageButton from '../components/Buttons/MessageButton';
+import NotificationButton from '../components/Buttons/NotificationButton';
+import ReportButton from '../components/Buttons/ReportButton';
+import { Stack } from '@mui/material';
 
 const AppBar: React.FC<AppBarProps> = ({ title, position, isSmall }) => (
     <MuiAppBar position={position} sx={{
@@ -31,21 +35,32 @@ const AppBar: React.FC<AppBarProps> = ({ title, position, isSmall }) => (
                     <MenuIcon />
                 </IconButton>
             )}
-            <Typography
-                variant="h5"
-                sx={{
-                    fontWeight: 700,
-                    lineHeight: '33px',
-                    color: 'inherit',
-                    fontSize: '2rem',
-                    textTransform: 'uppercase',
-                    textDecoration: 'none',
-                    flexGrow: 1
-                }}
-            >
-                {title}
-            </Typography>
-            <Box sx={{ flexGrow: 0 }}>
+            {!isSmall && (
+                <Typography
+                    variant="h5"
+                    sx={{
+                        fontWeight: 700,
+                        lineHeight: '33px',
+                        color: 'inherit',
+                        fontSize: '2rem',
+                        textTransform: 'uppercase',
+                        textDecoration: 'none',
+                        flexGrow: 1
+                    }}
+                >
+                    {title}
+                </Typography>
+            )}
+            <Box sx={{
+                display: 'flex',
+                justifyContent: 'end',
+                flex: 1
+             }}>
+                <Stack direction='row' spacing={1} mr={4}>
+                    <ReportButton />
+                    <NotificationButton />
+                    <MessageButton />
+                </Stack>
                 <Tooltip title="Open settings">
                     <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
                 </Tooltip>
