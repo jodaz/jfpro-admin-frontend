@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { AppBarProps } from '@mui/material';
 
 export interface LayoutProps {
     children: React.ReactNode
@@ -18,4 +19,9 @@ export interface SubMenuProps extends LayoutProps {
     name: string;
     icon: React.ReactNode,
     isActive: boolean
+}
+
+export interface AppBarProps extends AppBarProps {
+    title: string,
+    isSmall: boolean
 }

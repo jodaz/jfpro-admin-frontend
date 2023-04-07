@@ -8,10 +8,11 @@ import { Navigate } from 'react-router-dom';
 import AppBar from './AppBar';
 
 interface AdminLayoutProps extends LayoutProps {
-    title: string
+    title: string;
+    isSmall: boolean
 }
 
-const DesktopLayout: React.FC<AdminLayoutProps> = ({ children, title }) => (
+const DesktopLayout: React.FC<AdminLayoutProps> = ({ children, title, isSmall }) => (
     <Box sx={{
         display: 'flex',
         minHeight: '100vh',
@@ -26,7 +27,11 @@ const DesktopLayout: React.FC<AdminLayoutProps> = ({ children, title }) => (
             height: '100vh',
             width: '100%'
         }}>
-            <AppBar title={title} />
+            <AppBar
+                title={title}
+                isSmall={isSmall}
+                position='static'
+            />
             <Box sx={{
                 height: '100%',
                 width: '100%'
@@ -46,7 +51,7 @@ const Layout: React.FC<AdminLayoutProps> = ({ children, title }) => {
 
     if (!isSmall) {
         return (
-            <DesktopLayout title={title}>
+            <DesktopLayout title={title} isSmall={isSmall}>
                 {children}
             </DesktopLayout>
         )
@@ -60,10 +65,23 @@ const Layout: React.FC<AdminLayoutProps> = ({ children, title }) => {
             height: '100%'
         }} id="drawer-container">
             <Box sx={{
-                height: '90vh',
-                overflowY: 'scroll'
+                position: 'relative',
+                display: 'flex',
+                flexDirection: 'column',
+                height: '100vh',
+                width: '100%'
             }}>
-                {children}
+                <AppBar
+                    title={title}
+                    isSmall={isSmall}
+                    position='fixed'
+                />
+                <Box sx={{
+                    height: '100%',
+                    width: '100%'
+                }}>
+                    {children}
+                </Box>
             </Box>
         </Box>
     );
