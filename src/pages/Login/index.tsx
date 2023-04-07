@@ -26,7 +26,7 @@ const Login = () => {
     const onSubmit = React.useCallback(async (values: LoginValues) => {
         const loginUserResponse: any = await loginUser(authDispatch, values);
 
-        const { status, data, success } = loginUserResponse;
+        const { status, success } = loginUserResponse;
 
         if (success) {
             navigate('/overview')

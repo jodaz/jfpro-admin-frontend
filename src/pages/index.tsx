@@ -2,7 +2,8 @@ import * as React from 'react'
 import {
     Navigate,
     Route,
-    Routes
+    Routes,
+    useNavigate
 } from 'react-router-dom'
 // Pages
 import NotFound from './NotFound'
@@ -12,13 +13,29 @@ import Layout from '../layouts'
 import { getUser, useAuth } from '../providers/AuthContext'
 
 const Pages = () => {
-    const { state: { isAuth, token }, dispatch: authDispatch } = useAuth()
+    const navigate = useNavigate()
+    const { state: {
+        isAuth,
+        token,
+        loading
+    }, dispatch: authDispatch } = useAuth()
+
+    const checkAuthStatus = async () => {
+        const getUserResponse: any = await getUser(authDispatch)
+        const { success } = getUserResponse;
+
+        if (success) {
+            navigate('/overview')
+        }
+    }
 
     React.useEffect(() => {
         if (!isAuth && token) {
-            getUser(authDispatch)
+            checkAuthStatus()
         }
     }, [])
+
+    if (!loading) return <></>
 
     return (
         <Routes>

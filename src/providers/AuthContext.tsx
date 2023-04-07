@@ -116,10 +116,10 @@ export async function getUser(dispatch: any) {
                 data: response.data,
             }
         }
-
-        return false;
     } catch (error: any) {
         if (error.response.status >= 400 && error.response.status < 500) {
+            logout(dispatch)
+
             return {
                 success: false,
                 status: error.response.status,
