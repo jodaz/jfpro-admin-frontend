@@ -9,7 +9,7 @@ import AppBar from './AppBar';
 
 interface AdminLayoutProps extends LayoutProps {
     title: string;
-    AppBar: React.ReactNode
+    AppBar?: React.ReactNode
 }
 
 const DesktopLayout: React.FC<AdminLayoutProps> = ({ children, AppBar }) => (

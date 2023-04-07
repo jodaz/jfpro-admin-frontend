@@ -5,12 +5,13 @@ import {
     Routes,
     useNavigate
 } from 'react-router-dom'
+import { getUser, useAuth } from '../providers/AuthContext'
 // Pages
 import NotFound from './NotFound'
 import Login from './Login'
 import Overview from './Overview'
 import Layout from '../layouts'
-import { getUser, useAuth } from '../providers/AuthContext'
+import Chat from './Chat'
 
 const Pages = () => {
     const navigate = useNavigate()
@@ -48,6 +49,14 @@ const Pages = () => {
                 element={
                     <Layout title="Overview">
                         <Overview />
+                    </Layout>
+                }
+            />
+            <Route
+                path='/chat'
+                element={
+                    <Layout title="Mensajes">
+                        <Chat />
                     </Layout>
                 }
             />

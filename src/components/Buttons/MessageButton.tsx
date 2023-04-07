@@ -23,7 +23,7 @@ const MessageButton = () => (
             overlap="circular"
         >
             <LinkIconButton
-                to='/messages'
+                to='/chat'
                 title='Ver mensajes'
             >
                 <SmsIcon />
@@ -31,7 +31,7 @@ const MessageButton = () => (
         </Badge>
     ) : (
         <LinkIconButton
-            to='/messages'
+            to='/chat'
             title='Ver mensajes'
         >
             <SmsIcon />
