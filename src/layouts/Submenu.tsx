@@ -2,7 +2,6 @@ import * as React from 'react';
 import {
     List,
     Button,
-    Typography,
     Collapse,
     Tooltip
 } from '@mui/material'
@@ -10,17 +9,9 @@ import {
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 // Types
-import { LayoutProps } from '../types';
+import { SubMenuProps } from '../types';
 
-interface Props extends LayoutProps {
-    handleToggle: () => void;
-    isOpen: boolean;
-    name: string;
-    icon: React.ReactNode,
-    isActive: boolean
-}
-
-const SubMenu: React.FC<Props> = ({
+const SubMenu: React.FC<SubMenuProps> = ({
     handleToggle,
     isOpen,
     name,
