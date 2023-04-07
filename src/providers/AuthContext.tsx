@@ -6,7 +6,9 @@ import { apiProvider } from '../api';
 
 enum AuthActionType {
     LOGIN = 'LOGIN',
-    LOGOUT = 'LOGOUT'
+    LOGOUT = 'LOGOUT',
+    SET_USER = 'SET_USER',
+    TOGGLE_LOADING_USER = 'TOGGLE_LOADING_USER'
 }
 
 interface AuthAction {
@@ -16,7 +18,9 @@ interface AuthAction {
 
 const initialState: IAuth = {
     isAuth: false,
-    token: ''
+    user: null,
+    token: '',
+    loading: true
 }
 
 const setLocalCredentials = async (token: string) => {
@@ -32,7 +36,6 @@ const getInitialState = () => {
 
     if (localStorage.getItem(vars.authToken)) {
         localInitialState.token = localStorage.getItem(vars.authToken);
-        localInitialState.isAuth = true;
     }
 
     return localInitialState;
@@ -44,6 +47,19 @@ function authReducer(state: IAuth, action: AuthAction): IAuth {
             return {
                 ...state,
                 token: action.payload.token,
+                isAuth: true
+            }
+        }
+        case AuthActionType.TOGGLE_LOADING_USER: {
+            return {
+                ...state,
+                loading: !state.loading
+            }
+        }
+        case AuthActionType.SET_USER: {
+            return {
+                ...state,
+                user: action.payload,
                 isAuth: true
             }
         }
@@ -77,6 +93,42 @@ export function useAuth() {
     return context
 }
 
+export async function getUser(dispatch: any) {
+    try {
+        dispatch({
+            type: AuthActionType.TOGGLE_LOADING_USER
+        })
+
+        const response = await apiProvider.get('/user')
+
+        if (response.status >= 200 && response.status < 300) {
+            dispatch({
+                type: AuthActionType.SET_USER,
+                payload: response.data
+            })
+
+            dispatch({
+                type: AuthActionType.TOGGLE_LOADING_USER
+            })
+
+            return {
+                success: true,
+                data: response.data,
+            }
+        }
+
+        return false;
+    } catch (error: any) {
+        if (error.response.status >= 400 && error.response.status < 500) {
+            return {
+                success: false,
+                status: error.response.status,
+                data: error.response.data.errors
+            };
+        }
+    }
+}
+
 export async function loginUser(dispatch: any, values: any) {
     try {
         const response = await apiProvider.post('/login', values)
@@ -85,7 +137,7 @@ export async function loginUser(dispatch: any, values: any) {
             const { data } = response;
 
             dispatch({
-                type: 'LOGIN',
+                type: AuthActionType.LOGIN,
                 payload: {
                     token: data
                 }
@@ -110,7 +162,7 @@ export async function loginUser(dispatch: any, values: any) {
 
 export async function logout(dispatch: any) {
     try {
-        dispatch({ type: 'LOGOUT' })
+        dispatch({ type: AuthActionType.LOGOUT })
 
         await localStorage.removeItem(vars.authToken)
     } catch (e) {

@@ -20,7 +20,7 @@ const interceptorsFunc = (config: any) => {
 
     // When a 'token' is available set as token.
     if (token) {
-        newConfig.headers['x-token'] = `${token}`;
+        newConfig.headers['Authorization'] = `Bearer ${token}`;
     }
 
     return newConfig;
