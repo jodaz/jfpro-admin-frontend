@@ -5,22 +5,35 @@ import { Box, useMediaQuery, useTheme } from '@mui/material';
 import { LayoutProps } from '../types';
 import { useAuth } from '../providers/AuthContext';
 import { Navigate } from 'react-router-dom';
-// import ResponsiveAppBar from './AppBar';
+import AppBar from './AppBar';
 
 interface AdminLayoutProps extends LayoutProps {
     title: string
 }
 
-const DesktopLayout: React.FC<AdminLayoutProps> = ({ children }) => (
+const DesktopLayout: React.FC<AdminLayoutProps> = ({ children, title }) => (
     <Box sx={{
-        position: 'relative',
         display: 'flex',
-        flexDirection: 'row',
-        height: '100%'
+        minHeight: '100vh',
+        minWidth: 'fit-content',
+        width: '100%'
     }}>
         <Aside />
-        {/* <ResponsiveAppBar /> */}
-        {children}
+        <Box sx={{
+            position: 'relative',
+            display: 'flex',
+            flexDirection: 'column',
+            height: '100vh',
+            width: '100%'
+        }}>
+            <AppBar title={title} />
+            <Box sx={{
+                height: '100%',
+                width: '100%'
+            }}>
+                {children}
+            </Box>
+        </Box>
     </Box>
 )
 
