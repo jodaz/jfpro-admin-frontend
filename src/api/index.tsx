@@ -3,12 +3,12 @@ import vars from '../utils/vars';
 
 const jsonInstance = defaultAxios.create({
     baseURL: vars.source,
-    withCredentials: true
+    withCredentials: false
 });
 
 const blobInstance = defaultAxios.create({
     baseURL: vars.source,
-    withCredentials: true,
+    withCredentials: false,
     responseType: 'blob'
 });
 
@@ -20,7 +20,7 @@ const interceptorsFunc = (config: any) => {
 
     // When a 'token' is available set as token.
     if (token) {
-        newConfig.headers['x-token'] = `${token}`;
+        newConfig.headers['Authorization'] = `Bearer ${token}`;
     }
 
     return newConfig;

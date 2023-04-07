@@ -5,6 +5,7 @@ import { Box, useMediaQuery, useTheme } from '@mui/material';
 import { LayoutProps } from '../types';
 import { useAuth } from '../providers/AuthContext';
 import { Navigate } from 'react-router-dom';
+// import ResponsiveAppBar from './AppBar';
 
 interface AdminLayoutProps extends LayoutProps {
     title: string
@@ -18,6 +19,7 @@ const DesktopLayout: React.FC<AdminLayoutProps> = ({ children }) => (
         height: '100%'
     }}>
         <Aside />
+        {/* <ResponsiveAppBar /> */}
         {children}
     </Box>
 )
