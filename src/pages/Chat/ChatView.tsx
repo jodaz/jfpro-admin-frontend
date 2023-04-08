@@ -47,7 +47,7 @@ const ChatView = () => {
         >
             <ChatHeader user={chat?.user} />
             <MessagesList messages={chat.mensajes} />
-            <ChatForm />
+            <ChatForm canal_id={chat_id} />
         </Box>
     )
 }

@@ -31,3 +31,7 @@ export interface AppBarProps extends AppBarProps {
 export interface ChatHeaderProps {
     user: User
 }
+
+export interface ChatFormProps {
+    canal_id: undefined | string
+}

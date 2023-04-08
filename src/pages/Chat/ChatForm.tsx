@@ -3,18 +3,16 @@ import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
 import SendIcon from '@mui/icons-material/Send';
 import { useForm } from "react-hook-form";
-import { useAuth } from '../../providers/AuthContext';
 import TextInput from '../../components/TextInput';
-import { useParams } from 'react-router-dom';
 import { LoadingButton } from '@mui/lab';
+import { ChatFormProps } from '../../types';
+import { apiProvider } from '../../api';
 
 type ChatFormValues = {
     message: string;
 }
 
-const ChatForm = () => {
-    const { chatID } = useParams()
-    const { state: { user } } = useAuth()
+const ChatForm: React.FC<ChatFormProps> = ({ canal_id }) => {
     const { control, handleSubmit, setValue, formState: {
         isSubmitting
     }} = useForm<ChatFormValues>({
@@ -27,7 +25,14 @@ const ChatForm = () => {
     const onSubmit = React.useCallback(async (values: ChatFormValues) => {
         try {
             if (values.message) {
-                setValue('message', '')
+                const response = await apiProvider.post('/admin/send-message', {
+                    "canal_id": canal_id,
+                    "message": values.message
+                })
+
+                if (response.status >= 200 && response.status < 300) {
+                    setValue('message', '')
+                }
             }
         } catch (error) {
             console.log(error)
