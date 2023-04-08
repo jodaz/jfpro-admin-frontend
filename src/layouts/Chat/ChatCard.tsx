@@ -11,7 +11,8 @@ import LinkBehavior from '../../components/LinkBehavior';
 
 interface ChatCardProps {
     data: any,
-    index: number
+    index: number,
+    route: string
 }
 
 const Picture = (data: any) => (
@@ -26,6 +27,7 @@ const Picture = (data: any) => (
 const ChatCard: React.FC<ChatCardProps> = ({
     data,
     index,
+    route
 }) => {
     const loading = data == null;
     const anchorRef = React.useRef(null)
@@ -33,9 +35,9 @@ const ChatCard: React.FC<ChatCardProps> = ({
     return (
         <ListItem
             key={index}
-            // component={!loading &&  LinkBehavior}
+            component={LinkBehavior}
             disablePadding
-            to={!loading && `${data.conversation_id}`}
+            to={`${route}/${data.id}`}
             sx={{
                 color: 'unset',
             }}

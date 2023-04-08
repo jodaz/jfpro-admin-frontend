@@ -4,7 +4,7 @@ import { User } from './models';
 export interface IAuth {
     isAuth: boolean;
     token: string | null;
-    user: User;
+    user: User | null;
     loading: boolean;
 }
 

@@ -3,9 +3,18 @@ import {
     Grid
 } from '@mui/material';
 import ChatList from './ChatList';
-import ChatView from './ChatView';
+import { LayoutProps } from '../../types';
 
-const Chat = () => (
+interface ChatLayoutProps extends LayoutProps {
+    chats: any,
+    route: string
+}
+
+const Chat: React.FC<ChatLayoutProps> = ({
+    children,
+    chats,
+    route
+}) => (
     <Grid container sx={{
         height: '100%',
         bgcolor: theme => theme.palette.secondary.main,
@@ -16,10 +25,10 @@ const Chat = () => (
             borderRadius: '12px'
         }}>
             <Grid item md={4}>
-                <ChatList />
+                <ChatList chats={chats} route={route} />
             </Grid>
             <Grid item md={8}>
-                <ChatView />
+                {children}
             </Grid>
         </Grid>
     </Grid>
