@@ -12,7 +12,8 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({ user }) => {
         <Box sx={{
             display: 'flex',
             p: 2,
-            bgcolor: theme => theme.palette.secondary.main
+            bgcolor: theme => theme.palette.secondary.main,
+            minHeight: '2.5rem'
         }}>
             <Stack
                 direction='row'
@@ -20,9 +21,8 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({ user }) => {
             >
                 <Avatar />
                 <Typography
-                    variant="subtitle1"
+                    variant="h6"
                     color="text.primary"
-                    fontWeight={400}
                 >
                     {user.name} {user.lastname}
                 </Typography>

@@ -36,7 +36,6 @@ const ChatCard: React.FC<ChatCardProps> = ({
         <ListItem
             key={index}
             component={LinkBehavior}
-            disablePadding
             to={!loading && `${route}/${data.id}`}
             sx={{
                 color: 'unset',
@@ -45,7 +44,7 @@ const ChatCard: React.FC<ChatCardProps> = ({
             <Box sx={{
                 cursor: 'pointer',
                 display: 'flex',
-                padding: '0 0.5rem',
+                padding: '0.5rem',
                 borderRadius: '6px',
                 width: '100%',
                 alignItems: 'start',
