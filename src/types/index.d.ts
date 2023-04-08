@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { AppBarProps } from '@mui/material';
+import { User } from './models';
 
 export interface LayoutProps {
     children: React.ReactNode
@@ -24,5 +25,5 @@ export interface SubMenuProps extends LayoutProps {
 export interface AppBarProps extends AppBarProps {
     title: string,
     isSmall: boolean,
-    user: any
+    user: User
 }

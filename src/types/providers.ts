@@ -1,9 +1,10 @@
 import * as React from 'react'
+import { User } from './models';
 
 export interface IAuth {
     isAuth: boolean;
     token: string | null;
-    user: any;
+    user: User;
     loading: boolean;
 }
 
