@@ -3,8 +3,7 @@ import {
     Grid
 } from '@mui/material';
 import ChatList from './ChatList';
-import ChatHeader from './ChatHeader';
-import ChatForm from './ChatForm';
+import ChatView from './ChatView';
 
 const Chat = () => (
     <Grid container sx={{
@@ -19,11 +18,8 @@ const Chat = () => (
             <Grid item md={4}>
                 <ChatList />
             </Grid>
-            <Grid item md={8} sx={{
-                bgcolor: '#E6EBEF'
-            }}>
-                <ChatHeader />
-                <ChatForm />
+            <Grid item md={8}>
+                <ChatView />
             </Grid>
         </Grid>
     </Grid>
