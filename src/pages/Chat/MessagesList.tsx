@@ -3,59 +3,9 @@ import Box from '@mui/material/Box';
 import MessageCard from './MessageCard';
 import { useAuth } from '../../providers/AuthContext';
 
-const MessagesList: React.FC = () => {
+const MessagesList: React.FC<{ messages: any }> = ({ messages }) => {
     const { state: { user } } = useAuth()
     const boxElem = React.useRef<HTMLDivElement>(null)
-    const messages = [
-        {
-            emisor_id: 1,
-            message: 'qlq'
-        },
-        {
-            emisor_id: 2,
-            message: 'receptor'
-        },
-        {
-            emisor_id: 1,
-            message: 'qlq'
-        },
-        {
-            emisor_id: 2,
-            message: 'receptor'
-        },
-        {
-            emisor_id: 1,
-            message: 'qlq'
-        },
-        {
-            emisor_id: 2,
-            message: 'receptor'
-        },
-        {
-            emisor_id: 1,
-            message: 'qlq'
-        },
-        {
-            emisor_id: 2,
-            message: 'receptor'
-        },
-        {
-            emisor_id: 1,
-            message: 'qlq'
-        },
-        {
-            emisor_id: 2,
-            message: 'receptor'
-        },
-        {
-            emisor_id: 1,
-            message: 'qlq'
-        },
-        {
-            emisor_id: 2,
-            message: 'receptor'
-        },
-    ]
 
     React.useEffect(() => {
         // scroll to bottom
@@ -68,6 +18,8 @@ const MessagesList: React.FC = () => {
             });
         }
     }, [])
+
+    if (user == null) return null;
 
     return (
         <Box sx={{
@@ -100,7 +52,7 @@ const MessagesList: React.FC = () => {
                 backgroundColor: "#959595",
             },
         }} ref={boxElem}>
-            {messages.map(message => (
+            {messages.map((message: any) => (
                 <MessageCard
                     message={message.message}
                     isReceptor={message.emisor_id != user.id}

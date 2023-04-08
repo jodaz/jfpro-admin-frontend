@@ -4,7 +4,7 @@ import SelectChatAlert from './SelectChatAlert'
 import { apiProvider } from '../../api'
 
 const ChatFree: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
-    const [chats, setChats] = React.useState([])
+    const [chats, setChats] = React.useState([null])
 
     const fetchChats = async () => {
         try {

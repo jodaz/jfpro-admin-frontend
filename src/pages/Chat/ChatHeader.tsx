@@ -1,11 +1,13 @@
+import * as React from 'react'
 import {
     Avatar,
     Box,
     Typography,
     Stack
 } from "@mui/material"
+import { ChatHeaderProps } from '../../types'
 
-const ChatHeader = () => {
+const ChatHeader: React.FC<ChatHeaderProps> = ({ user }) => {
     return (
         <Box sx={{
             display: 'flex',
@@ -22,7 +24,7 @@ const ChatHeader = () => {
                     color="text.primary"
                     fontWeight={400}
                 >
-                    Pablo Almao
+                    {user.name} {user.lastname}
                 </Typography>
             </Stack>
         </Box>

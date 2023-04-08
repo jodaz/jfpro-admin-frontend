@@ -4,11 +4,11 @@ import SelectChatAlert from './SelectChatAlert'
 import { apiProvider } from '../../api'
 
 const ChatPremium: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
-    const [chats, setChats] = React.useState([])
+    const [chats, setChats] = React.useState([null])
 
     const fetchChats = async () => {
         try {
-            const response = await apiProvider.get('/admin/get-chats-by-canals')
+            const response = await apiProvider.get('/admin/get-chats-by-suscriptions')
 
             if (response.status >= 200 && response.status < 300) {
                 const { data } = response
@@ -26,8 +26,10 @@ const ChatPremium: React.FC<{ children?: React.ReactNode }> = ({ children }) => 
         }
     };
 
+    React.useEffect(() => { fetchChats() }, [])
+
     return (
-        <Chat>
+        <Chat chats={chats} route='/chat/premium'>
             {children}
         </Chat>
     )

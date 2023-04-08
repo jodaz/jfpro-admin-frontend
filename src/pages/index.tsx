@@ -89,7 +89,7 @@ const Pages = () => {
                 }
             />
             <Route
-                path='/chat/channels/:id'
+                path='/chat/channels/:chat_id'
                 element={
                     <Layout title="Mensajes">
                         <ChatFree>

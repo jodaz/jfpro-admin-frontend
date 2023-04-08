@@ -37,7 +37,7 @@ const ChatCard: React.FC<ChatCardProps> = ({
             key={index}
             component={LinkBehavior}
             disablePadding
-            to={`${route}/${data.id}`}
+            to={!loading && `${route}/${data.id}`}
             sx={{
                 color: 'unset',
             }}
@@ -52,7 +52,6 @@ const ChatCard: React.FC<ChatCardProps> = ({
                 transition: '0.1s',
                 textDecoration: 'none',
                 color: 'unset',
-                p: 1,
                 '&:hover': {
                     backgroundColor: theme => `${alpha(theme.palette.divider, 0.7)}`
                 }

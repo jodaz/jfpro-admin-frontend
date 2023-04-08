@@ -27,3 +27,7 @@ export interface AppBarProps extends AppBarProps {
     isSmall: boolean,
     user: User
 }
+
+export interface ChatHeaderProps {
+    user: User
+}
