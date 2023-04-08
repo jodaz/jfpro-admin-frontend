@@ -9,7 +9,8 @@ const ChatHeader = () => {
     return (
         <Box sx={{
             display: 'flex',
-            p: 2
+            p: 2,
+            bgcolor: theme => theme.palette.secondary.main
         }}>
             <Stack
                 direction='row'
