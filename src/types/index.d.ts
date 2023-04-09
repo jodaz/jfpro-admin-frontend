@@ -1,5 +1,6 @@
 import * as React from 'react'
-import { AppBarProps } from '@mui/material';
+import { AppBarProps, ToggleButtonProps } from '@mui/material';
+import { User } from './models';
 
 export interface LayoutProps {
     children: React.ReactNode
@@ -24,5 +25,22 @@ export interface SubMenuProps extends LayoutProps {
 export interface AppBarProps extends AppBarProps {
     title: string,
     isSmall: boolean,
-    user: any
+    user: User
+}
+
+export interface ChatHeaderProps {
+    user: User
+}
+
+export interface ChatViewProps {
+    isPremium?: boolean
+}
+
+export interface ChatFormProps extends ChatViewProps {
+    canal_id: undefined | string
+}
+
+export interface ToggleButtonProps extends ToggleButtonProps {
+    currentPath?: string,
+    value: string
 }

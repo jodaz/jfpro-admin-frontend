@@ -5,12 +5,15 @@ import {
     Routes,
     useNavigate
 } from 'react-router-dom'
+import { getUser, useAuth } from '../providers/AuthContext'
 // Pages
 import NotFound from './NotFound'
 import Login from './Login'
 import Overview from './Overview'
 import Layout from '../layouts'
-import { getUser, useAuth } from '../providers/AuthContext'
+import ChatFree from './Chat/ChatFree'
+import ChatPremium from './Chat/ChatPremium'
+import ChatView from './Chat/ChatView'
 
 const Pages = () => {
     const navigate = useNavigate()
@@ -51,6 +54,51 @@ const Pages = () => {
                     </Layout>
                 }
             />
+
+            {/**
+             * Chat routes
+             */}
+            <Route
+                path='/chat'
+                element={<Navigate to='/chat/channels' replace />}
+            />
+            <Route
+                path='/chat/channels'
+                element={
+                    <Layout title="Mensajes">
+                        <ChatFree />
+                    </Layout>
+                }
+            />
+            <Route
+                path='/chat/premium'
+                element={
+                    <Layout title="Mensajes">
+                        <ChatPremium />
+                    </Layout>
+                }
+            />
+            <Route
+                path='/chat/premium/:chat_id'
+                element={
+                    <Layout title="Mensajes">
+                        <ChatPremium>
+                            <ChatView isPremium />
+                        </ChatPremium>
+                    </Layout>
+                }
+            />
+            <Route
+                path='/chat/channels/:chat_id'
+                element={
+                    <Layout title="Mensajes">
+                        <ChatFree>
+                            <ChatView />
+                        </ChatFree>
+                    </Layout>
+                }
+            />
+
             <Route path='/' element={<Navigate to='/login' replace />} />
             <Route
                 path='*'

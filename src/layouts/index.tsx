@@ -9,7 +9,7 @@ import AppBar from './AppBar';
 
 interface AdminLayoutProps extends LayoutProps {
     title: string;
-    AppBar: React.ReactNode
+    AppBar?: React.ReactNode
 }
 
 const DesktopLayout: React.FC<AdminLayoutProps> = ({ children, AppBar }) => (
@@ -42,7 +42,7 @@ const Layout: React.FC<AdminLayoutProps> = ({ children, title }) => {
     const theme = useTheme()
     const { state: { isAuth, user } } = useAuth();
     const isSmall = useMediaQuery(theme.breakpoints.down('sm'));
-    console.log(user)
+
     if (!isAuth) return <Navigate to='/login' />
 
     if (!isSmall) {
