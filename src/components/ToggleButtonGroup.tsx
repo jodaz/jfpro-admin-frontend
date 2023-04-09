@@ -18,6 +18,8 @@ const ToggleButtonGroup: React.FC<LayoutProps> = ({ children }) => {
         navigate(`${newAlignment}`);
     };
 
+    console.log(location.pathname.includes('/chat/channels'))
+
     return (
         <StyledMuiToggleButtonGroup
             value={location.pathname}

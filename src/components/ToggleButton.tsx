@@ -29,7 +29,7 @@ const StyledMuiToggleButton = styled(MuiToggleButton)(({ theme }) => ({
 
 const ToggleButton: React.FC<ToggleButtonProps> = ({ children, currentPath, value, ...restProps }) => (
     <StyledMuiToggleButton
-        selected={currentPath == value}
+        selected={currentPath?.includes(value)}
         value={value}
         {...restProps}
     >

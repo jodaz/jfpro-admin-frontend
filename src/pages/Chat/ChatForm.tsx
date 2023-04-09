@@ -35,8 +35,6 @@ const ChatForm: React.FC<ChatFormProps> = ({ canal_id, isPremium }) => {
                     data.message = values.message
                 }
 
-                console.log(data)
-
                 const response = await apiProvider.post(isPremium ?
                     '/admin/send-message-suscription' :
                     '/admin/send-message', data)
