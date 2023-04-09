@@ -34,7 +34,8 @@ const Chat: React.FC<ChatLayoutProps> = ({
         </Box>
         <Grid container sx={{
             border: '1px solid #DDE2E8',
-            borderRadius: '12px'
+            borderRadius: '12px',
+            flex: 1
         }}>
             <Grid item md={4}>
                 <ChatList chats={chats} route={route} />

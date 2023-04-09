@@ -79,11 +79,11 @@ const Pages = () => {
                 }
             />
             <Route
-                path='/chat/premium/:id'
+                path='/chat/premium/:chat_id'
                 element={
                     <Layout title="Mensajes">
                         <ChatPremium>
-                            <ChatView />
+                            <ChatView isPremium />
                         </ChatPremium>
                     </Layout>
                 }

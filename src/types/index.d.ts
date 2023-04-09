@@ -32,7 +32,11 @@ export interface ChatHeaderProps {
     user: User
 }
 
-export interface ChatFormProps {
+export interface ChatViewProps {
+    isPremium?: boolean
+}
+
+export interface ChatFormProps extends ChatViewProps {
     canal_id: undefined | string
 }
 

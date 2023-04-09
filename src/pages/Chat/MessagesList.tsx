@@ -54,7 +54,7 @@ const MessagesList: React.FC<{ messages: any }> = ({ messages }) => {
         }} ref={boxElem}>
             {messages.map((message: any) => (
                 <MessageCard
-                    message={message.message}
+                    message={message.message ? message.message : message.mensaje}
                     isReceptor={message.emisor_id != user.id}
                 />
             ))}

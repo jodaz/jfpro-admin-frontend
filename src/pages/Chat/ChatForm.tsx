@@ -12,7 +12,7 @@ type ChatFormValues = {
     message: string;
 }
 
-const ChatForm: React.FC<ChatFormProps> = ({ canal_id }) => {
+const ChatForm: React.FC<ChatFormProps> = ({ canal_id, isPremium }) => {
     const { control, handleSubmit, setValue, formState: {
         isSubmitting
     }} = useForm<ChatFormValues>({
@@ -25,10 +25,21 @@ const ChatForm: React.FC<ChatFormProps> = ({ canal_id }) => {
     const onSubmit = React.useCallback(async (values: ChatFormValues) => {
         try {
             if (values.message) {
-                const response = await apiProvider.post('/admin/send-message', {
-                    "canal_id": canal_id,
-                    "message": values.message
-                })
+                const data: any = {}
+
+                if (isPremium) {
+                    data.plan_by_user_id = canal_id
+                    data.mensaje = values.message
+                } else {
+                    data.canal_id = canal_id
+                    data.message = values.message
+                }
+
+                console.log(data)
+
+                const response = await apiProvider.post(isPremium ?
+                    '/admin/send-message-suscription' :
+                    '/admin/send-message', data)
 
                 if (response.status >= 200 && response.status < 300) {
                     setValue('message', '')
