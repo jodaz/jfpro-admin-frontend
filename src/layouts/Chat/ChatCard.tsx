@@ -35,6 +35,7 @@ const ChatCard: React.FC<ChatCardProps> = ({
     return (
         <ListItem
             key={index}
+            //@ts-ignore
             component={LinkBehavior}
             to={!loading && `${route}/${data.id}`}
             sx={{

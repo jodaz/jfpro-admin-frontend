@@ -54,6 +54,7 @@ const Layout: React.FC<AdminLayoutProps> = ({ children, title }) => {
                         title={title}
                         isSmall={isSmall}
                         position='static'
+                        //@ts-ignore
                         user={user}
                     />
                 }
@@ -81,6 +82,7 @@ const Layout: React.FC<AdminLayoutProps> = ({ children, title }) => {
                     title={title}
                     isSmall={isSmall}
                     position='fixed'
+                    //@ts-ignore
                     user={user}
                 />
                 <Box sx={{

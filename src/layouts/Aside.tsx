@@ -130,6 +130,7 @@ const Sidebar = () => {
     })
 
     const handleToggle = (menu: string) => {
+        //@ts-ignore
         setState(state => ({ ...state, [menu]: !state[menu] }));
     };
 
