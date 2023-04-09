@@ -42,7 +42,7 @@ const Layout: React.FC<AdminLayoutProps> = ({ children, title }) => {
     const theme = useTheme()
     const { state: { isAuth, user } } = useAuth();
     const isSmall = useMediaQuery(theme.breakpoints.down('sm'));
-    console.log(user)
+
     if (!isAuth) return <Navigate to='/login' />
 
     if (!isSmall) {

@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { AppBarProps } from '@mui/material';
+import { AppBarProps, ToggleButtonProps } from '@mui/material';
 import { User } from './models';
 
 export interface LayoutProps {
@@ -34,4 +34,9 @@ export interface ChatHeaderProps {
 
 export interface ChatFormProps {
     canal_id: undefined | string
+}
+
+export interface ToggleButtonProps extends ToggleButtonProps {
+    currentPath?: string,
+    value: string
 }

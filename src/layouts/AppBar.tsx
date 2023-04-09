@@ -20,7 +20,8 @@ const AppBar: React.FC<AppBarProps> = ({ title, position, isSmall, user }) => (
         boxShadow: 'none',
         borderBottom: 0,
         transition: 'width 195ms cubic-bezier(0.4, 0, 0.6, 1) 0ms',
-        height: '10vh'
+        height: '10vh',
+        minHeight: '64px'
     }}>
         <Toolbar>
             {isSmall && (
