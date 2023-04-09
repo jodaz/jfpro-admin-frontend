@@ -33,7 +33,7 @@ const Content: React.FC<ContentProps> = ({ isAuth }) => (
                 404 - Ups!
             </Box>
             <Box sx={{
-                fontSize: '2rem',
+                fontSize: { sm: '1rem', md: '2rem' },
                 padding: '1rem 0',
                 fontWeight: 400
             }}>
