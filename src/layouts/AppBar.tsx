@@ -11,6 +11,7 @@ import MessageButton from '../components/Buttons/MessageButton';
 import NotificationButton from '../components/Buttons/NotificationButton';
 import ReportButton from '../components/Buttons/ReportButton';
 import { Stack } from '@mui/material';
+import PrivateRoute from '../components/PrivateRoute';
 
 const AppBar: React.FC<AppBarProps> = ({ title, position, isSmall, user }) => (
     <MuiAppBar position={position} sx={{
@@ -57,7 +58,9 @@ const AppBar: React.FC<AppBarProps> = ({ title, position, isSmall, user }) => (
                 flex: 1
              }}>
                 <Stack direction='row' spacing={1} mr={4}>
-                    <ReportButton />
+                    <PrivateRoute authorize='administrador'>
+                        <ReportButton />
+                    </PrivateRoute>
                     <NotificationButton />
                     <MessageButton />
                 </Stack>

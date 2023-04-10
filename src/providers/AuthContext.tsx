@@ -112,7 +112,8 @@ export async function getUser(dispatch: any) {
 
         if (response.status >= 200 && response.status < 300) {
             const { roles, ...restData } = response.data
-            const userRoles = roles.map((role: Role) => role.name).join('')
+            const userRoles = roles.map((role: Role) => role.name)
+                .join('').toLowerCase()
 
             dispatch({
                 type: AuthActionType.SET_USER,

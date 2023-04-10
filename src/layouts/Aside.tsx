@@ -204,7 +204,7 @@ const Sidebar = () => {
                         {...OverviewRoute}
                         isActive={location.pathname.startsWith(OverviewRoute.to)}
                     />
-                    <PrivateRoute authorize={'admin'}>
+                    <PrivateRoute authorize='administrador'>
                         <SubMenu
                             handleToggle={() => handleToggle('users')}
                             isOpen={state.users}
