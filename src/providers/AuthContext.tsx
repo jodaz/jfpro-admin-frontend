@@ -145,6 +145,8 @@ export async function loginUser(dispatch: any, values: any) {
 
             await setLocalCredentials(data)
 
+            await getUser(dispatch)
+
             return { success: true };
         }
 
