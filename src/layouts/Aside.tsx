@@ -21,6 +21,7 @@ import LocalDiningIcon from '@mui/icons-material/LocalDining';
 import CategoryIcon from '@mui/icons-material/Category';
 import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
 import { useLocation } from "react-router-dom";
+import PrivateRoute from '../components/PrivateRoute';
 
 const drawerWidth = '350px';
 
@@ -203,80 +204,82 @@ const Sidebar = () => {
                         {...OverviewRoute}
                         isActive={location.pathname.startsWith(OverviewRoute.to)}
                     />
-                    <SubMenu
-                        handleToggle={() => handleToggle('users')}
-                        isOpen={state.users}
-                        name="Usuarios"
-                        icon={<PersonIcon />}
-                        isActive={location.pathname.startsWith('/users')}
-                    >
-                        {usersRoutes.map(item => (
-                            <NavLink
-                                {...item}
-                                isActive={location.pathname.startsWith(item.to)}
-                                isSubmenuItem
-                            />
-                        ))}
-                    </SubMenu>
-                    <SubMenu
-                        handleToggle={() => handleToggle('training')}
-                        isOpen={state.training}
-                        name="Entrenamiento"
-                        icon={<FitnessCenterIcon />}
-                        isActive={location.pathname.startsWith('/training')}
-                    >
-                        {trainingRoutes.map(item => (
-                            <NavLink
-                                {...item}
-                                isActive={location.pathname.startsWith(item.to)}
-                                isSubmenuItem
-                            />
-                        ))}
-                    </SubMenu>
-                    <SubMenu
-                        handleToggle={() => handleToggle('nutrition')}
-                        isOpen={state.nutrition}
-                        name="Alimentación"
-                        icon={<LocalDiningIcon />}
-                        isActive={location.pathname.startsWith('/nutrition')}
-                    >
-                        {nutritionRoutes.map(item => (
-                            <NavLink
-                                {...item}
-                                isActive={location.pathname.startsWith(item.to)}
-                                isSubmenuItem
-                            />
-                        ))}
-                    </SubMenu>
-                    <SubMenu
-                        handleToggle={() => handleToggle('gallery')}
-                        isOpen={state.gallery}
-                        name="Gallería"
-                        icon={<CategoryIcon />}
-                        isActive={location.pathname.startsWith('/gallery')}
-                    >
-                        {galleryRoutes.map(item => (
-                            <NavLink
-                                {...item}
-                                isActive={location.pathname.startsWith(item.to)}
-                                isSubmenuItem
-                            />
-                        ))}
-                    </SubMenu>
-                    <Divider
-                        sx={{
-                            width: '80%',
-                            alignSelf: 'center',
-                            marginTop: '1.5rem !important',
-                            borderColor: '#343842 !important'
-                        }}
-                    />
-                    {routes.map(item => (
-                        <NavLink
-                            {...item}
-                            isActive={location.pathname.startsWith(item.to)}
+                    <PrivateRoute authorize={'admin'}>
+                        <SubMenu
+                            handleToggle={() => handleToggle('users')}
+                            isOpen={state.users}
+                            name="Usuarios"
+                            icon={<PersonIcon />}
+                            isActive={location.pathname.startsWith('/users')}
+                        >
+                            {usersRoutes.map(item => (
+                                <NavLink
+                                    {...item}
+                                    isActive={location.pathname.startsWith(item.to)}
+                                    isSubmenuItem
+                                />
+                            ))}
+                        </SubMenu>
+                        <SubMenu
+                            handleToggle={() => handleToggle('training')}
+                            isOpen={state.training}
+                            name="Entrenamiento"
+                            icon={<FitnessCenterIcon />}
+                            isActive={location.pathname.startsWith('/training')}
+                        >
+                            {trainingRoutes.map(item => (
+                                <NavLink
+                                    {...item}
+                                    isActive={location.pathname.startsWith(item.to)}
+                                    isSubmenuItem
+                                />
+                            ))}
+                        </SubMenu>
+                        <SubMenu
+                            handleToggle={() => handleToggle('nutrition')}
+                            isOpen={state.nutrition}
+                            name="Alimentación"
+                            icon={<LocalDiningIcon />}
+                            isActive={location.pathname.startsWith('/nutrition')}
+                        >
+                            {nutritionRoutes.map(item => (
+                                <NavLink
+                                    {...item}
+                                    isActive={location.pathname.startsWith(item.to)}
+                                    isSubmenuItem
+                                />
+                            ))}
+                        </SubMenu>
+                        <SubMenu
+                            handleToggle={() => handleToggle('gallery')}
+                            isOpen={state.gallery}
+                            name="Gallería"
+                            icon={<CategoryIcon />}
+                            isActive={location.pathname.startsWith('/gallery')}
+                        >
+                            {galleryRoutes.map(item => (
+                                <NavLink
+                                    {...item}
+                                    isActive={location.pathname.startsWith(item.to)}
+                                    isSubmenuItem
+                                />
+                            ))}
+                        </SubMenu>
+                        <Divider
+                            sx={{
+                                width: '80%',
+                                alignSelf: 'center',
+                                marginTop: '1.5rem !important',
+                                borderColor: '#343842 !important'
+                            }}
                         />
-                    ))}
+                        {routes.map(item => (
+                            <NavLink
+                                {...item}
+                                isActive={location.pathname.startsWith(item.to)}
+                            />
+                        ))}
+                    </PrivateRoute>
                 </Stack>
                 <LogoutButton />
             </Box>

@@ -3,12 +3,14 @@ import { IAuth, AuthContextType } from '../types/providers'
 import { LayoutProps } from '../types'
 import vars from '../utils/vars'
 import { apiProvider } from '../api';
+import { Role } from '../types/models';
 
 enum AuthActionType {
     LOGIN = 'LOGIN',
     LOGOUT = 'LOGOUT',
     SET_USER = 'SET_USER',
-    TOGGLE_LOADING_USER = 'TOGGLE_LOADING_USER'
+    TOGGLE_LOADING_USER = 'TOGGLE_LOADING_USER',
+    SET_ROLE = 'SET_ROLE'
 }
 
 interface AuthAction {
@@ -20,7 +22,8 @@ const initialState: IAuth = {
     isAuth: false,
     user: null,
     token: '',
-    loading: true
+    loading: true,
+    role: null
 }
 
 const setLocalCredentials = async (token: string) => {
@@ -48,6 +51,12 @@ function authReducer(state: IAuth, action: AuthAction): IAuth {
                 ...state,
                 token: action.payload.token,
                 isAuth: true
+            }
+        }
+        case AuthActionType.SET_ROLE: {
+            return {
+                ...state,
+                role: action.payload
             }
         }
         case AuthActionType.TOGGLE_LOADING_USER: {
@@ -102,13 +111,21 @@ export async function getUser(dispatch: any) {
         const response = await apiProvider.get('/user')
 
         if (response.status >= 200 && response.status < 300) {
+            const { roles, ...restData } = response.data
+            const userRoles = roles.map((role: Role) => role.name).join('')
+
             dispatch({
                 type: AuthActionType.SET_USER,
-                payload: response.data
+                payload: restData
             })
 
             dispatch({
                 type: AuthActionType.TOGGLE_LOADING_USER
+            })
+
+            dispatch({
+                type: AuthActionType.SET_ROLE,
+                payload: userRoles
             })
 
             return {

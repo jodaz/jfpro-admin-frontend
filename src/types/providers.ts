@@ -6,6 +6,7 @@ export interface IAuth {
     token: string | null;
     user: User | null;
     loading: boolean;
+    role: any;
 }
 
 export type AuthContextType = {
