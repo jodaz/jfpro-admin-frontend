@@ -253,7 +253,7 @@ const Sidebar = () => {
                         <SubMenu
                             handleToggle={() => handleToggle('gallery')}
                             isOpen={state.gallery}
-                            name="Gallería"
+                            name="Galería"
                             icon={<CategoryIcon />}
                             isActive={location.pathname.startsWith('/gallery')}
                         >
