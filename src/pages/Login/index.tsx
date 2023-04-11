@@ -7,6 +7,7 @@ import { LoadingButton } from '@mui/lab';
 import { useForm } from 'react-hook-form';
 import { EMAIL, PASSWORD } from '../../utils/validations';
 import TextInput from '../../components/TextInput';
+import PasswordInput from '../../components/PasswordInput';
 import { useNavigate } from 'react-router-dom';
 import { loginUser, useAuth } from '../../providers/AuthContext';
 import Logo from '../../assets/branding/LOGO_DARK.svg'
@@ -75,7 +76,7 @@ const Login = () => {
                             rules={EMAIL.rules}
                             fullWidth
                         />
-                        <TextInput
+                        <PasswordInput
                             label='Contraseña'
                             name='password'
                             control={control}
