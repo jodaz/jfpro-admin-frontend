@@ -42,9 +42,7 @@ const ChatView: React.FC<ChatViewProps> = ({ isPremium }) => {
         }
     };
 
-    console.log(chat)
-
-    React.useEffect(() => { fetchChats() }, [])
+    React.useEffect(() => { fetchChats() }, [chat_id])
 
     if (!chat) return null;
 
