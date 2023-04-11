@@ -51,7 +51,7 @@ const Login = () => {
         }}>
             <Box sx={{
                 bgcolor: '#fff',
-                minWidth: '320px',
+                width: { xs: '300px', sm: '320px', md: '360px', lg: '460px' },
                 borderRadius: '15px'
             }}>
                 <Box
@@ -62,7 +62,7 @@ const Login = () => {
                     <Stack
                         spacing={4}
                         direction='column'
-                        p={3}
+                        p={4}
                     >
                         <Box component='img' src={Logo} />
                         <TextInput
