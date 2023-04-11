@@ -25,12 +25,13 @@ const DesktopLayout: React.FC<AdminLayoutProps> = ({ children, AppBar }) => (
             display: 'flex',
             flexDirection: 'column',
             height: '100vh',
-            width: '100%'
+            width: '100%',
+            bgcolor: theme => theme.palette.secondary.main,
         }}>
             {AppBar}
             <Box sx={{
                 height: '100%',
-                width: '100%'
+                p: 4
             }}>
                 {children}
             </Box>
@@ -70,7 +71,8 @@ const Layout: React.FC<AdminLayoutProps> = ({ children, title }) => {
             position: 'relative',
             display: 'flex',
             flexDirection: 'column',
-            height: '100%'
+            height: '100%',
+            bgcolor: theme => theme.palette.secondary.main,
         }} id="drawer-container">
             <Box sx={{
                 position: 'relative',

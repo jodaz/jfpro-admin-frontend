@@ -4,7 +4,7 @@ import { styled } from '@mui/material/styles';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { LayoutProps } from '../types';
 
-const StyledMuiToggleButtonGroup = styled(MuiToggleButtonGroup)(({ theme }) => ({
+const StyledMuiToggleButtonGroup = styled(MuiToggleButtonGroup)(() => ({
     borderRadius: '100px',
     justifyContent: 'center',
     width: 'fit-content',
