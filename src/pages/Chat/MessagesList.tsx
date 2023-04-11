@@ -3,8 +3,17 @@ import Box from '@mui/material/Box';
 import MessageCard from './MessageCard';
 import { useAuth } from '../../providers/AuthContext';
 import scrollbarStyles from '../../styles/scrollbarStyles';
+import { User } from '../../types/models';
 
-const MessagesList: React.FC<{ messages: any }> = ({ messages }) => {
+const getIfMessageisFromReceptor = (isPremium: boolean | undefined, message: any, user: User) => {
+    if (isPremium) {
+        return message.coach_id == null;
+    }
+
+    return message.emisor_id != user.id
+}
+
+const MessagesList: React.FC<{ messages: any, isPremium: boolean | undefined }> = ({ messages, isPremium }) => {
     const { state: { user } } = useAuth()
     const boxElem = React.useRef<HTMLDivElement>(null)
 
@@ -37,7 +46,7 @@ const MessagesList: React.FC<{ messages: any }> = ({ messages }) => {
             {messages.map((message: any) => (
                 <MessageCard
                     message={message.message ? message.message : message.mensaje}
-                    isReceptor={message.emisor_id != user.id}
+                    isReceptor={getIfMessageisFromReceptor(isPremium, message, user)}
                 />
             ))}
         </Box>

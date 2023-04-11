@@ -59,7 +59,7 @@ const ChatView: React.FC<ChatViewProps> = ({ isPremium }) => {
             }}
         >
             <ChatHeader user={chat?.user} />
-            <MessagesList messages={messages} />
+            <MessagesList isPremium={isPremium} messages={messages} />
             <ChatForm
                 canal_id={chat_id}
                 isPremium={isPremium}
