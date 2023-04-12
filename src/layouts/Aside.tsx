@@ -140,7 +140,6 @@ const Sidebar: React.FC<DrawerProps> = ({ variant, open, onClose }) => {
     return (
         <Drawer
             sx={{
-                display: { xs: 'block', sm: 'none' },
                 flexShrink: 0,
                 '& .MuiDrawer-paper': {
                     width: drawerWidth,
@@ -148,6 +147,7 @@ const Sidebar: React.FC<DrawerProps> = ({ variant, open, onClose }) => {
                     border: 'none',
                     bgcolor: theme => theme.palette.primary.main
                 },
+                width: drawerWidth,
                 ...scrollbarStyles
             }}
             ModalProps={{
