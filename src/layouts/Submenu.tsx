@@ -27,7 +27,8 @@ const SubMenu: React.FC<SubMenuProps> = ({
             color='secondary'
             sx={{
                 justifyContent: 'start',
-                backgroundColor: isActive ? '#343842' : 'unset'
+                backgroundColor: isActive ? '#343842' : 'unset',
+                margin: '0 !important'
             }}
         >
             {name}

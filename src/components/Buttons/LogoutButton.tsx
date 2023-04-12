@@ -14,7 +14,10 @@ const LogoutButton = () => {
 
     return (
         <Box alignSelf='start'>
-            <Button color="secondary" onClick={handleClick}>
+            <Button color="secondary" onClick={handleClick} sx={{
+                lineHeight: '20px',
+                margin: '0 !important'
+            }}>
                 <Logout /> Cerrar sesión
             </Button>
         </Box>

@@ -17,7 +17,9 @@ const NavLink: React.FC<NavLinkProps> = ({ icon, to, title, isActive, isSubmenuI
                     justifyContent: 'start',
                     backgroundColor: (isActive && !isSubmenuItem) ? '#343842' : 'unset',
                     color:  (!isActive && isSubmenuItem)
-                        ? '#757E8A' : (isActive && isSubmenuItem) ? '#fff' : '#fff'
+                        ? '#757E8A' : (isActive && isSubmenuItem) ? '#fff' : '#fff',
+                    lineHeight: '20px',
+                    margin: '0 !important'
                 }}
             >
                 {title}
