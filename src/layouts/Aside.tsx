@@ -4,7 +4,8 @@ import {
     Drawer,
     Toolbar,
     Divider,
-    Stack
+    Stack,
+    DrawerProps
 } from "@mui/material";
 import LogoutButton from "../components/Buttons/LogoutButton";
 import NavLink from "./NavLink";
@@ -24,7 +25,7 @@ import { useLocation } from "react-router-dom";
 import PrivateRoute from '../components/PrivateRoute';
 import scrollbarStyles from '../styles/scrollbarStyles';
 
-const drawerWidth = '350px';
+const drawerWidth = '280px';
 
 const OverviewRoute = {
     title: 'Overview',
@@ -122,7 +123,7 @@ const galleryRoutes = [
     }
 ]
 
-const Sidebar = () => {
+const Sidebar: React.FC<DrawerProps> = ({ variant, open, onClose }) => {
     const location = useLocation();
     const [state, setState] = React.useState({
         users: false,
@@ -139,7 +140,7 @@ const Sidebar = () => {
     return (
         <Drawer
             sx={{
-                width: drawerWidth,
+                display: { xs: 'block', sm: 'none' },
                 flexShrink: 0,
                 '& .MuiDrawer-paper': {
                     width: drawerWidth,
@@ -147,12 +148,15 @@ const Sidebar = () => {
                     border: 'none',
                     bgcolor: theme => theme.palette.primary.main
                 },
-                zIndex: 1000,
-                bgcolor: theme => theme.palette.primary.main,
                 ...scrollbarStyles
             }}
-            variant="permanent"
+            ModalProps={{
+                keepMounted: true, // Better open performance on mobile.
+            }}
+            open={open}
+            variant={variant}
             anchor="left"
+            onClose={onClose}
         >
             <Toolbar sx={{
                 display: 'flex',

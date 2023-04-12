@@ -13,7 +13,7 @@ import ReportButton from '../components/Buttons/ReportButton';
 import { Stack } from '@mui/material';
 import PrivateRoute from '../components/PrivateRoute';
 
-const AppBar: React.FC<AppBarProps> = ({ title, position, isSmall, user }) => (
+const AppBar: React.FC<AppBarProps> = ({ title, position, isSmall, user, handleToggle }) => (
     <MuiAppBar position={position} sx={{
         backgroundColor: '#F2F5F7',
         color: theme => theme.palette.primary.main,
@@ -32,6 +32,7 @@ const AppBar: React.FC<AppBarProps> = ({ title, position, isSmall, user }) => (
                     color="inherit"
                     aria-label="menu"
                     sx={{ mr: 2 }}
+                    onClick={handleToggle}
                 >
                     <MenuIcon />
                 </IconButton>

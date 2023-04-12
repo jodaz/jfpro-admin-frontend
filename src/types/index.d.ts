@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { AppBarProps, ToggleButtonProps } from '@mui/material';
+import { AppBarProps, DrawerProps, ToggleButtonProps } from '@mui/material';
 import { User } from './models';
 
 export interface LayoutProps {
@@ -25,7 +25,8 @@ export interface SubMenuProps extends LayoutProps {
 export interface AppBarProps extends AppBarProps {
     title: string,
     isSmall: boolean,
-    user: User
+    user: User,
+    handleToggle?: () => void;
 }
 
 export interface ChatHeaderProps {

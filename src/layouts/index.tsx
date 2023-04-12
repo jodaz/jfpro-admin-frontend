@@ -19,7 +19,7 @@ const DesktopLayout: React.FC<AdminLayoutProps> = ({ children, AppBar }) => (
         minWidth: 'fit-content',
         width: '100%'
     }}>
-        <Aside />
+        <Aside variant='permanent' />
         <Box sx={{
             position: 'relative',
             display: 'flex',
@@ -43,6 +43,9 @@ const Layout: React.FC<AdminLayoutProps> = ({ children, title }) => {
     const theme = useTheme()
     const { state: { isAuth, user } } = useAuth();
     const isSmall = useMediaQuery(theme.breakpoints.down('sm'));
+    const [isOpenDrawer, setIsOpenDrawer] = React.useState(false)
+
+    const toggleDrawer = () => setIsOpenDrawer(!isOpenDrawer);
 
     if (!isAuth) return <Navigate to='/login' />
 
@@ -81,11 +84,17 @@ const Layout: React.FC<AdminLayoutProps> = ({ children, title }) => {
                 height: '100vh',
                 width: '100%'
             }}>
+                <Aside
+                    variant='temporary'
+                    open={isOpenDrawer}
+                    onClose={() => toggleDrawer()}
+                />
                 <AppBar
                     title={title}
                     isSmall={isSmall}
                     position='fixed'
                     user={user}
+                    handleToggle={() => toggleDrawer()}
                 />
                 <Box sx={{
                     height: '100%',
