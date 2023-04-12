@@ -23,11 +23,11 @@ const ChatList: React.FC<ChatListProps> = ({ chats, route }) => (
     }}>
         <Stack
             direction='row'
-            spacing={1}
             p={1}
             sx={{
                 borderBottom: '1px solid #DAE0E6',
-                height: '50px'
+                height: '55px',
+                alignItems: 'center'
             }}
         >
             <Typography

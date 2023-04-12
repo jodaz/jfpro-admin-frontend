@@ -13,7 +13,7 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({ user }) => {
             display: 'flex',
             p: 2,
             bgcolor: theme => theme.palette.secondary.main,
-            minHeight: '2.5rem'
+            maxHeight: '50px'
         }}>
             <Stack
                 direction='row'
