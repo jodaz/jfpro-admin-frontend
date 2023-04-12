@@ -65,19 +65,10 @@ const ChatForm: React.FC<ChatFormProps> = ({ canal_id, isPremium }) => {
                             color="primary"
                             variant="contained"
                             loading={isSubmitting}
+                            type="submit"
                         >
                             Enviar
                         </LoadingButton>
-                        // <IconButton
-                        //     sx={{
-                        //         fontSize: '1rem',
-                        //         padding: '0'
-                        //     }}
-                        //     type="submit"
-                        //     disabled={isSubmitting}
-                        // >
-                        //     <SendIcon />
-                        // </IconButton>
                     }
                     sx={{
                         bgcolor: '#E6EBEF'
