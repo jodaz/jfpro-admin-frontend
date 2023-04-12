@@ -60,7 +60,7 @@ const Pages = () => {
              */}
             <Route
                 path='/chat'
-                element={<Navigate to='/chat/channels' replace />}
+                element={<Navigate to='/chat/premium' replace />}
             />
             <Route
                 path='/chat/channels'

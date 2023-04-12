@@ -18,11 +18,11 @@ const Chat: React.FC<ChatLayoutProps> = ({
     <Grid container rowSpacing={2} direction="column">
         <Grid item sm padding='0 !important' mb={1}>
             <ToggleButtonGroup>
-                <ToggleButton value="/chat/channels">
-                    Canales
-                </ToggleButton>
                 <ToggleButton value="/chat/premium">
                     Premium
+                </ToggleButton>
+                <ToggleButton value="/chat/channels">
+                    Canales
                 </ToggleButton>
             </ToggleButtonGroup>
         </Grid>
