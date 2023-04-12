@@ -40,7 +40,9 @@ const Chat: React.FC<ChatLayoutProps> = ({
                 borderRadius: '12px',
                 paddingTop: '0 !important'
             }}>
-                <Grid container minHeight='500px' maxHeight='400px'>
+                <Grid container sx={{
+                    minHeight: { xs: '90vh', sm: '55vh', md: '60vh', lg: '70vh' }
+                }}>
                     <Grid item md={4} height='inherit'>
                         <ChatList chats={chats} route={route} />
                     </Grid>
