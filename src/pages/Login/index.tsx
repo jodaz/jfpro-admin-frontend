@@ -82,7 +82,6 @@ const Login = () => {
                             control={control}
                             disabled={isSubmitting}
                             placeholder='Ingresar contraseña'
-                            type='password'
                             validations={PASSWORD.messages}
                             rules={PASSWORD.rules}
                             fullWidth
