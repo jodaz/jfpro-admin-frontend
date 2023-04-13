@@ -47,7 +47,7 @@ const MessagesList: React.FC<{ messages: any, isPremium: boolean | undefined }> 
                 <MessageCard
                     message={message.message ? message.message : message.mensaje}
                     isReceptor={getIfMessageisFromReceptor(isPremium, message, user)}
-                    isCoach={message.coach_id}
+                    isCoach={user.id == message.coach_id}
                 />
             ))}
         </Box>

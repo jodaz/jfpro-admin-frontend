@@ -48,7 +48,7 @@ const MessageCard: React.FC<MessageCard> = ({ message, isReceptor, isCoach }) =>
     }
 
     return (
-        <SenderMessage dark={isCoach}>
+        <SenderMessage dark={isCoach ? true : false}>
             <Typography
                 textAlign='left'
                 color="secondary.main"
