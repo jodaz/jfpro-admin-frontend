@@ -3,7 +3,7 @@ import LinkIconButton from '../LinkIconButton';
 import TextSnippetIcon from '@mui/icons-material/TextSnippet';
 
 const ReportButton = () => (
-    true ? (
+    false ? (
         <Badge
             badgeContent=''
             anchorOrigin={{

@@ -3,7 +3,7 @@ import LinkIconButton from '../LinkIconButton';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 
 const NotificationButton = () => (
-    true ? (
+    false ? (
         <Badge
             badgeContent=''
             anchorOrigin={{

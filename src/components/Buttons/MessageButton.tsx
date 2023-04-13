@@ -3,7 +3,7 @@ import LinkIconButton from '../LinkIconButton';
 import SmsIcon from '@mui/icons-material/Sms';
 
 const MessageButton = () => (
-    true ? (
+    false ? (
         <Badge
             badgeContent=''
             anchorOrigin={{
