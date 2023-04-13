@@ -42,7 +42,17 @@ const ChatView: React.FC<ChatViewProps> = ({ isPremium }) => {
         }
     };
 
-    React.useEffect(() => { fetchChats() }, [chat_id])
+    React.useEffect(() => {
+        fetchChats();
+    }, [chat_id])
+
+    React.useEffect(() => {
+        const interval = setInterval(() => fetchChats(), 40 * 1000);
+
+        return () => {
+            clearTimeout(interval);
+        };
+    }, [])
 
     if (!chat) return null;
 
