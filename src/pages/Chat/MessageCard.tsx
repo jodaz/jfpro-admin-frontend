@@ -6,9 +6,10 @@ import styled from '@emotion/styled';
 interface MessageCard {
     message: string;
     isReceptor: boolean;
+    isCoach: boolean | null | number
 }
 
-const GeneralMessage = styled(Box)(() => ({
+const GeneralMessage: React.FC<any> = styled(Box)(() => ({
     position: 'relative',
     padding: '1rem',
     maxWidth: '50%',
@@ -27,16 +28,15 @@ const ReceptorMessage = styled(GeneralMessage)(() => ({
     marginLeft: '0.5rem'
 }))
 
-const SenderMessage = styled(GeneralMessage)(() => ({
-    backgroundColor: '#161B24',
+const SenderMessage: React.FC<any> = styled(GeneralMessage)(({ dark }) => ({
+    backgroundColor: dark ? '#161B24' : '#757E8A',
     borderTopRightRadius: 0,
     alignSelf: 'end',
     marginRight: '0.5rem',
     position: 'relative'
 }))
 
-const MessageCard: React.FC<MessageCard> = ({ message, isReceptor }) => {
-
+const MessageCard: React.FC<MessageCard> = ({ message, isReceptor, isCoach }) => {
     if (isReceptor) {
         return (
             <ReceptorMessage>
@@ -48,7 +48,7 @@ const MessageCard: React.FC<MessageCard> = ({ message, isReceptor }) => {
     }
 
     return (
-        <SenderMessage>
+        <SenderMessage dark={isCoach}>
             <Typography
                 textAlign='left'
                 color="secondary.main"
