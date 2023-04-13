@@ -52,7 +52,7 @@ const ChatView: React.FC<ChatViewProps> = ({ isPremium }) => {
         return () => {
             clearTimeout(interval);
         };
-    }, [])
+    }, [chat_id])
 
     if (!chat) return null;
 
