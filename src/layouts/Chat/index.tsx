@@ -47,7 +47,7 @@ const Chat: React.FC<ChatLayoutProps> = ({
 
     return (
         <Grid container direction="column" sx={{
-            padding: '0 1rem',
+            padding: isSmall ? '0 1rem' : 'unset',
             paddingTop: isSmall ? '5rem' : 'unset'
         }}>
             {!(isSmall && chat_id ) ? (
