@@ -46,8 +46,9 @@ const Chat: React.FC<ChatLayoutProps> = ({
     if (!user) return null;
 
     return (
-        <Grid container rowSpacing={2} direction="column" sx={{
-            paddingTop: isSmall ? '6rem' : 'unset'
+        <Grid container direction="column" sx={{
+            padding: '0 1rem',
+            paddingTop: isSmall ? '5rem' : 'unset'
         }}>
             {!(isSmall && chat_id ) ? (
                 <PrivateRoute authorize='administrador'>
