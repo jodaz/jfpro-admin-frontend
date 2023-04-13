@@ -30,7 +30,7 @@ const Chat: React.FC<ChatLayoutProps> = ({
                             Premium
                         </ToggleButton>
                         <ToggleButton value="/chat/channels">
-                            Canales
+                            Free
                         </ToggleButton>
                     </ToggleButtonGroup>
                 </Grid>
