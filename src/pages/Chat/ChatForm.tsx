@@ -12,7 +12,7 @@ type ChatFormValues = {
     message: string;
 }
 
-const ChatForm: React.FC<ChatFormProps> = ({ canal_id, isPremium }) => {
+const ChatForm: React.FC<ChatFormProps> = ({ canal_id, isPremium, refresh }) => {
     const { control, handleSubmit, setValue, formState: {
         isSubmitting
     }} = useForm<ChatFormValues>({
@@ -40,6 +40,7 @@ const ChatForm: React.FC<ChatFormProps> = ({ canal_id, isPremium }) => {
                     '/admin/send-message', data)
 
                 if (response.status >= 200 && response.status < 300) {
+                    refresh()
                     setValue('message', '')
                 }
             }

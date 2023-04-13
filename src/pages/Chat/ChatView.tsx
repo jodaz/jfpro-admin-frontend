@@ -71,6 +71,7 @@ const ChatView: React.FC<ChatViewProps> = ({ isPremium }) => {
             <ChatForm
                 canal_id={chat_id}
                 isPremium={isPremium}
+                refresh={fetchChats}
             />
         </Box>
     )

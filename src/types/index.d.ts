@@ -38,7 +38,8 @@ export interface ChatViewProps {
 }
 
 export interface ChatFormProps extends ChatViewProps {
-    canal_id: undefined | string
+    canal_id: undefined | string,
+    refresh: () => void
 }
 
 export interface ToggleButtonProps extends ToggleButtonProps {
