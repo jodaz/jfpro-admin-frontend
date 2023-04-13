@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Box } from "@mui/material"
+import { Box, CircularProgress } from "@mui/material"
 import ChatHeader from "./ChatHeader"
 import MessagesList from "./MessagesList"
 import ChatForm from "./ChatForm"
@@ -54,7 +54,21 @@ const ChatView: React.FC<ChatViewProps> = ({ isPremium }) => {
         };
     }, [chat_id])
 
-    if (!chat) return null;
+    if (!chat) {
+        return (
+            <Box
+                sx={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    width: '100%',
+                    height: '100%'
+                }}
+            >
+                <CircularProgress color="primary" />
+            </Box>
+        );
+    }
 
     return (
         <Box

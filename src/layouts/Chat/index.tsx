@@ -36,7 +36,7 @@ const Chat: React.FC<ChatLayoutProps> = ({
                 </Grid>
             )}
             {!!(chat_id ) && (
-                <Grid item md={8}>
+                <Grid item md={8} sm={12} xs={12}>
                     {children}
                 </Grid>
             )}
@@ -88,7 +88,7 @@ const Chat: React.FC<ChatLayoutProps> = ({
                         <Grid item md={4} sm={12} xs={12} height='inherit'>
                             <ChatList chats={chats} route={route} />
                         </Grid>
-                        <Grid item md={8}>
+                        <Grid item md={8} sm={12} xs={12}>
                             {children}
                         </Grid>
                     </Grid>
