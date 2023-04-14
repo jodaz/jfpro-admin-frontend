@@ -67,7 +67,7 @@ const Chat: React.FC<ChatLayoutProps> = ({
                 <Grid item sm padding='0 !important' mb={1}>
                     <Button
                         component={LinkBehavior}
-                        to='/chat/channels'
+                        to='/chat/premium'
                         color='primary'
                         startIcon={<ArrowBackIosIcon />}
                     >

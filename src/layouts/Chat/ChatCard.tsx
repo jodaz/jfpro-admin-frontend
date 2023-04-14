@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import ListItem from '@mui/material/ListItem';
 import Typography from '@mui/material/Typography';
 import Skeleton from "@mui/material/Skeleton";
-import { alpha } from '@mui/material';
+import { alpha, useMediaQuery, useTheme } from '@mui/material';
 import Badge from '@mui/material/Badge';
 import Chip from '@mui/material/Chip';
 import truncateString from '../../utils/truncateString';
@@ -30,6 +30,8 @@ const ChatCard: React.FC<ChatCardProps> = ({
     index,
     route
 }) => {
+    const theme = useTheme()
+    const isSmall = useMediaQuery(theme.breakpoints.down('sm'))
     const loading = data == null;
     const anchorRef = React.useRef(null)
 
@@ -110,11 +112,11 @@ const ChatCard: React.FC<ChatCardProps> = ({
                     ) : (
                         <>
                             <Typography variant="subtitle1" fontWeight={500}>
-                                {truncateString(`${data.user.name} ${data.user.lastName ? data.user.lastName : ''}`, 12 )}
+                                {truncateString(`${data.user.name} ${data.user.lastName ? data.user.lastName : ''}`, 7 )}
                             </Typography>
                             {data.plan && (
                                 <Chip
-                                    label={data.plan.name}
+                                    label={isSmall ? truncateString(data.plan.tipo, 5) : data.plan.tipo }
                                     color="success"
                                     size='small'
                                     sx={{ fontWeight: 500, color: '#fff', ml: 1 }}
