@@ -3,6 +3,7 @@ import {
     Navigate,
     Route,
     Routes,
+    useLocation,
     useNavigate
 } from 'react-router-dom'
 import { getUser, useAuth } from '../providers/AuthContext'
@@ -17,8 +18,8 @@ import ChatView from './Chat/ChatView'
 
 const Pages = () => {
     const navigate = useNavigate()
+    const location = useLocation()
     const { state: {
-        isAuth,
         token,
         loading
     }, dispatch: authDispatch } = useAuth()
@@ -28,12 +29,16 @@ const Pages = () => {
         const { success } = getUserResponse;
 
         if (success) {
-            navigate('/overview')
+            if (location.pathname == '/login') {
+                navigate('/overview')
+            }
+        } else {
+            navigate('/login')
         }
     }
 
     React.useEffect(() => {
-        if (!isAuth && token) {
+        if (token) {
             checkAuthStatus()
         }
     }, [])

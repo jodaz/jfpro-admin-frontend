@@ -4,7 +4,6 @@ import Aside from './Aside'
 import { Box, useMediaQuery, useTheme } from '@mui/material';
 import { LayoutProps } from '../types';
 import { useAuth } from '../providers/AuthContext';
-import { Navigate } from 'react-router-dom';
 import AppBar from './AppBar';
 
 interface AdminLayoutProps extends LayoutProps {
@@ -46,8 +45,6 @@ const Layout: React.FC<AdminLayoutProps> = ({ children, title }) => {
     const [isOpenDrawer, setIsOpenDrawer] = React.useState(false)
 
     const toggleDrawer = () => setIsOpenDrawer(!isOpenDrawer);
-
-    if (!isAuth) return <Navigate to='/login' />
 
     if (!user) return null;
 
