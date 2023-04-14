@@ -21,7 +21,7 @@ const Chat: React.FC<ChatLayoutProps> = ({
     route
 }) => {
     const theme = useTheme()
-    const isSmall = useMediaQuery(theme.breakpoints.down('sm'))
+    const isSmall = useMediaQuery(theme.breakpoints.down('md'))
     const { state: { user } } = useAuth()
     const { chat_id } = useParams()
 
@@ -31,12 +31,12 @@ const Chat: React.FC<ChatLayoutProps> = ({
             width: '100%'
         }}>
             {!!(!chat_id ) && (
-                <Grid item md={4} sm={12} xs={12} height='inherit'>
+                <Grid item xs={12} height='inherit'>
                     <ChatList chats={chats} route={route} />
                 </Grid>
             )}
             {!!(chat_id ) && (
-                <Grid item md={8} sm={12} xs={12}>
+                <Grid item xs={12}>
                     {children}
                 </Grid>
             )}
@@ -85,10 +85,10 @@ const Chat: React.FC<ChatLayoutProps> = ({
                         minHeight: { xs: '80vh', sm: '55vh', md: '60vh', lg: '70vh' },
                         width: '100%'
                     }}>
-                        <Grid item md={4} sm={12} xs={12} height='inherit'>
+                        <Grid item lg={4} md={5} height='inherit'>
                             <ChatList chats={chats} route={route} />
                         </Grid>
-                        <Grid item md={8} sm={12} xs={12}>
+                        <Grid item lg={8} md={7}>
                             {children}
                         </Grid>
                     </Grid>
