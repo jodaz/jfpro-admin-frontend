@@ -18,7 +18,7 @@ const ChatList: React.FC<ChatListProps> = ({ chats, route }) => (
         display: 'flex',
         flexDirection: 'column',
         color: theme => theme.palette.primary.main,
-        borderRight: '1px solid #DAE0E6',
+        borderRight: { sm: 'none', md: '1px solid #DAE0E6' },
         height: '100%'
     }}>
         <Stack
