@@ -1,6 +1,6 @@
 const truncateString = (str: string, num: number) => {
     if (str) {
-        if (str.length > num) {
+        if (str.trim().length > num) {
             return `${str.slice(0, num).trimEnd()}...`;
         }
     }

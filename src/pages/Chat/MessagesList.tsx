@@ -5,6 +5,11 @@ import { useAuth } from '../../providers/AuthContext';
 import scrollbarStyles from '../../styles/scrollbarStyles';
 import { User } from '../../types/models';
 
+interface MessageListProps {
+    messages: any,
+    isPremium: boolean | undefined
+}
+
 const getIfMessageisFromReceptor = (isPremium: boolean | undefined, message: any, user: User) => {
     if (isPremium) {
         return message.coach_id == null;
@@ -13,7 +18,7 @@ const getIfMessageisFromReceptor = (isPremium: boolean | undefined, message: any
     return message.emisor_id != user.id
 }
 
-const MessagesList: React.FC<{ messages: any, isPremium: boolean | undefined }> = ({ messages, isPremium }) => {
+const MessagesList: React.FC<MessageListProps> = ({ messages, isPremium }) => {
     const { state: { user } } = useAuth()
     const boxElem = React.useRef<HTMLDivElement>(null)
 

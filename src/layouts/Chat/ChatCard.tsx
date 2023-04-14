@@ -6,6 +6,7 @@ import Typography from '@mui/material/Typography';
 import Skeleton from "@mui/material/Skeleton";
 import { alpha } from '@mui/material';
 import Badge from '@mui/material/Badge';
+import Chip from '@mui/material/Chip';
 import truncateString from '../../utils/truncateString';
 import LinkBehavior from '../../components/LinkBehavior';
 
@@ -96,7 +97,7 @@ const ChatCard: React.FC<ChatCardProps> = ({
                 </Box>
                 <Box sx={{
                     display: 'flex',
-                    flexDirection: 'column',
+                    flexDirection: 'row',
                     flex: 1
                 }}>
                     {loading ? (
@@ -107,9 +108,19 @@ const ChatCard: React.FC<ChatCardProps> = ({
                             style={{ marginBottom: 6 }}
                         />
                     ) : (
-                        <Typography variant="subtitle1" fontWeight={500}>
-                            {truncateString(`${data.user.name} ${data.user.lastName ? data.user.lastName : ''}`, 12 )}
-                        </Typography>
+                        <>
+                            <Typography variant="subtitle1" fontWeight={500}>
+                                {truncateString(`${data.user.name} ${data.user.lastName ? data.user.lastName : ''}`, 12 )}
+                            </Typography>
+                            {data.plan && (
+                                <Chip
+                                    label={data.plan.name}
+                                    color="success"
+                                    size='small'
+                                    sx={{ fontWeight: 500, color: '#fff', ml: 1 }}
+                                />
+                            )}
+                        </>
                     )}
                 </Box>
             </Box>
