@@ -47,7 +47,7 @@ const ChatForm: React.FC<ChatFormProps> = ({ canal_id, isPremium, refresh }) => 
         } catch (error) {
             console.log(error)
         }
-    }, []);
+    }, [canal_id, isPremium]);
 
     return (
         <Box sx={{
