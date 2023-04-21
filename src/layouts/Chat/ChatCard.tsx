@@ -99,7 +99,7 @@ const ChatCard: React.FC<ChatCardProps> = ({
                 </Box>
                 <Box sx={{
                     display: 'flex',
-                    flexDirection: 'row',
+                    flexDirection: { xs: 'column', sm: 'row', md: 'row', lg: 'row' },
                     flex: 1
                 }}>
                     {loading ? (
@@ -111,16 +111,33 @@ const ChatCard: React.FC<ChatCardProps> = ({
                         />
                     ) : (
                         <>
-                            <Typography variant="subtitle1" fontWeight={500}>
-                                {truncateString(`${data.user.name} ${data.user.lastName ? data.user.lastName : ''}`, 7 )}
+                            <Typography
+                                variant="subtitle1"
+                                fontWeight={500}
+                                mr={1}
+                            >
+                               {truncateString(`${data.user.name} ${data.user.lastName ? data.user.lastName : ''}`, 7 )}
                             </Typography>
                             {data.plan && (
-                                <Chip
-                                    label={isSmall ? truncateString(data.plan.tipo, 5) : data.plan.tipo }
-                                    color="success"
-                                    size='small'
-                                    sx={{ fontWeight: 500, color: '#fff', ml: 1 }}
-                                />
+                                <>
+                                    {isSmall ? (
+                                        <Box sx={{ flex: 1 }}>
+                                            <Chip
+                                                label={data.plan.tipo}
+                                                color="success"
+                                                size='small'
+                                                sx={{ fontWeight: 500, color: '#fff' }}
+                                            />
+                                        </Box>
+                                    ) : (
+                                        <Chip
+                                            label={data.plan.tipo}
+                                            color="success"
+                                            size='small'
+                                            sx={{ fontWeight: 500, color: '#fff', ml: 1 }}
+                                        />
+                                    )}
+                                </>
                             )}
                         </>
                     )}
